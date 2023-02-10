@@ -1,0 +1,145 @@
+.sidebar{
+    grid-column: 1/2;
+    grid-row: 2/3;
+    background-color:var(--sidebar);
+    transform: translate(0%,0%);
+}
+
+
+.mainMenu{
+    border-bottom: 2px var(--textColor) solid;
+    width: 230px;
+    margin-left: 20px;
+    margin-top: 30px;
+}
+.mainMenu h2{
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: var(--textColor);
+}
+
+ul{
+    display: flex;
+  list-style: none;
+    color: var(--textColor);
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 30px;
+    flex-direction: column;
+    text-align: left;
+    justify-content: center;
+    font-size:15px;
+    gap: 5px 0px;
+    
+}
+
+ul li{
+    padding: 5px 30px;
+    display: flex;
+    gap: 4px;
+    
+}
+
+ul li img{
+    width: 20px;
+    height: 20px;
+}
+
+ul li:hover{
+    
+    background-color: var(--mainContent);
+    
+}
+
+
+.Project-list{
+    border-bottom: 2px var(--textColor) solid;
+    width: 230px;
+    margin-left: 20px;
+    margin-top: 30px;
+   
+}
+
+.Project-list h2{
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: var(--textColor);
+}
+
+.project-ul li{
+     position: relative;
+     
+}
+
+
+.plus{
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--textColor);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    position: absolute;
+    top:7px;
+    right: 14px;
+    left: 5px;
+    padding: 1px;
+    
+    
+    
+}
+
+.plus p{
+  position: relative;  
+  top: -0.08em;
+  right: 0.03;;
+}
+
+.activated-list{
+    height: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows:30px 20px;
+    font-family: 'Alata', sans-serif;
+    
+
+
+}
+
+.activated-list button:nth-child(2){
+    padding: 3px 6px;
+    width: 70px;
+    color: white;
+    background-color: var(--accentDark);
+    border-radius: 3px;
+    border: none;
+    margin-right: auto;
+
+
+}
+
+.activated-list button:nth-child(3){
+    padding: 3px 6px;
+    width: 70px;
+    color: white;
+    background-color: red;
+    border-radius: 3px;
+    border: none;
+    margin-left: auto;
+
+}
+
+
+.project-ul li input {
+    font-family: 'Alata', sans-serif;
+   height: 27px;
+   width: 100%;
+   border-color: var(--textColor);
+   border-radius: 3px;
+   padding-left: 2px;
+   grid-column: 1/3;
+
+    
+}
