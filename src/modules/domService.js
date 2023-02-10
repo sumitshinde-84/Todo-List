@@ -1,10 +1,11 @@
-import PubSub from 'pubsub-js';
+import PubSub from "pubsub-js";
 
 // const iconClick = 'false';
 
 
 
-function toggle() {
+ export function toggle() {
+    console.log(PubSub)
   console.log('working');
 //   if (iconClick === 'false') {
 //     mainContent.style.gridColumn = '1/3';
