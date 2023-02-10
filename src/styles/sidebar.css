@@ -143,3 +143,18 @@ ul li:hover{
 
     
 }
+
+
+.antherClassForUl{
+    background-color: #2abd675f;
+    border-left: 3px var(--accentDark) solid;
+    border-radius: 2px;
+  
+}
+
+.antherClassForUlOff{
+    background-color:var(--sidebar);
+    border: none;
+    
+  
+}

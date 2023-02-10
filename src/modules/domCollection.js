@@ -1,0 +1,10 @@
+export const menuIcon = document.querySelector(".menuImg");
+export const sideBar = document.querySelector(".sidebar");
+export const mainContent = document.querySelector(".mainContent");
+export const list = document.querySelectorAll("#main-list > li");
+export const check = document.querySelector(".checkImg");
+export const projectList = document.querySelector(".project-ul");
+export const plus = document.querySelector('.plus')
+export const projectList2 = document.querySelector(".project-ul")
+export const secondList = document.querySelectorAll(".project-ul li")
+export const projectTitlePara = document.querySelector('.Project-Title')

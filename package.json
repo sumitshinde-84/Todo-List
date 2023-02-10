@@ -1,27 +1,30 @@
 {
-  "name": "todo-list",
+  "name": "to-do-list",
   "version": "1.0.0",
   "description": "",
-  "private": true,
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --watch",
+    "start": "webpack serve --open",
     "build": "webpack"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sumitshinde-84/Todo-List.git"
+    "url": "git+https://github.com/Aditya-A-G/to-do-list.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sumitshinde-84/Todo-List/issues"
+    "url": "https://github.com/Aditya-A-G/to-do-list/issues"
   },
-  "homepage": "https://github.com/sumitshinde-84/Todo-List#readme",
+  "homepage": "https://github.com/Aditya-A-G/to-do-list#readme",
   "devDependencies": {
     "css-loader": "^6.7.3",
     "eslint": "^8.33.0",
     "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-import": "^2.27.5",
     "style-loader": "^3.3.1",
     "webpack": "^5.75.0",
@@ -29,7 +32,6 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
-    "lodash": "^4.17.21",
     "pubsub-js": "^1.9.4"
   }
 }
