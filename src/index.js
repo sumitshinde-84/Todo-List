@@ -6,4 +6,10 @@ import './styles/mainContent.css';
 import './styles/footer.css';
 import PubSub from 'pubsub-js';
 
-PubSub.subscribe('menu icon clicked',toggle)
+
+
+const menuIcon = document.querySelector('.menuImg');
+  
+  menuIcon.addEventListener('click', () => {
+    PubSub.publish('ToggleMenuClicked');
+  });
