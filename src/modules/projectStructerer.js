@@ -12,7 +12,6 @@ function createProject(){
     const ProjectObj = project(projectInput.value,[],count) 
     Projects.push(ProjectObj)
     projectForm.reset()
-    console.log(Projects)
     count++;
 }
 

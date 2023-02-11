@@ -66,7 +66,12 @@ function addProject(){
 
 const projectList = document.createElement('li')
 projectList.dataset.index=count
-projectList.textContent=projectInput.value
+projectList.innerHTML=
+`<p>${projectInput.value}</p> 
+<select>
+<option>Rename</option>
+<option>Delete</option>
+</select>`
 projectUl.appendChild(projectList)
 projectForm.style.display='none'
 count++;

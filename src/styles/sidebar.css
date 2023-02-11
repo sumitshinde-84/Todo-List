@@ -62,6 +62,39 @@ ul li:hover{
    
 }
 
+
+.project-ul li p::after{
+    content: "⋮";
+    color:var(--textColor);
+    position: absolute;;
+    right: 40px;
+    font-weight: bolder;
+}
+ select{
+    
+    
+    width: 20px;
+    border: none;
+    background-color: transparent;
+    color: transparent;
+    position: absolute;;
+    right: 40px;
+
+    
+}
+
+select option{
+   
+   background-color: var(--mainContent);
+   color: var(--textColor);
+   
+}
+
+select:focus{
+    border: none;
+    outline: none;
+}
+
 .Project-list h2{
     font-size: 20px;
     margin-bottom: 5px;
@@ -77,7 +110,10 @@ ul li:hover{
     list-style: none;
     color: var(--textColor);
     padding: 5px 50px;
+
 }
+
+
 .add-Project li:hover {
     position: relative; 
     list-style: none;
