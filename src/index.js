@@ -7,7 +7,7 @@ import './styles/mainContent.css';
 import './styles/footer.css';
 import domService from './modules/domService';
 import eventController from './modules/eventController';
-
+import projectStructerer from './modules/projectStructerer'
 
 
 

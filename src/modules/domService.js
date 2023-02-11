@@ -1,6 +1,6 @@
 import PubSub from 'pubsub-js';
 import {
-     mainContent, sideBar,list
+     mainContent, sideBar,projectInput,projectForm,projectUl
   } from "./domCollection";
 
   
@@ -51,5 +51,27 @@ PubSub.subscribe('buttonClicked', (eventname,data) => {
         
   });
 
-PubSub.subscribe("ToggleMenuClicked",toggle)
+// ---------------------------function for open project detail form ---------------------------------------------
+function openForm(){
 
+projectForm.style.display='grid'
+
+}
+
+function closeForm(){
+  projectForm.style.display='none' 
+}
+
+function addProject(){
+
+const projectList = document.createElement('li')
+projectList.textContent=projectInput.value
+projectUl.appendChild(projectList)
+projectForm.style.display='none'
+
+}
+
+PubSub.subscribe("ToggleMenuClicked",toggle)
+PubSub.subscribe('clickAddProject',openForm)
+PubSub.subscribe('addProject',addProject)
+PubSub.subscribe('closeForm',closeForm)
