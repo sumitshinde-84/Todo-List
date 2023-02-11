@@ -28,7 +28,7 @@
                 <h2>Home</h2>
         </div>
                 <ul id="main-list">
-                    <li> <img src="./images/inbox.png" alt=""> All Task</li>
+                    <li> <img src="./images/inbox.png" alt="" ondblclick="disabled"> All Task</li>
                     <li> <img src="./images/today.png" alt=""> Today</li>
                     <li> <img src="./images/week.png" alt=""> Next 7 Days</li>
                     <li> <img src="./images/star.png" alt=""> Important</li>
@@ -40,9 +40,16 @@
 
                 </div>
                 <ul class="project-ul">
-                    <li><div class="plus"><p>+</p></div>Add Project</li>
+                   <form >
+                    <input type="text">
+                    <button class="add" type="reset">Add</button>
+                    <button class="cancle">Cancel</button>
+                   </form>
                 </ul>
-
+                <div class="add-Project">
+                    <li><div class="plus"><p>+</p></div>Add Project</li>
+                </div>
+                
         </div>
         <div class="mainContent">
             <div class="Project-Title">
