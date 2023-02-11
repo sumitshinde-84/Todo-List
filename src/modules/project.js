@@ -1,12 +1,13 @@
 
 
-export default function project(name,task){
-
-    name:name;
-    task:task
+export default function project(name,task,dataIndex){
+     
+    dataIndex;  
+    name;
+    task;
     
     return{
-        name,task
+        name,task,dataIndex
     }
 
 }

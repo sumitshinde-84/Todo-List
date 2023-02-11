@@ -20,6 +20,11 @@
     height: 80px;
     align-self: center;
     margin-right:140px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    padding-left: 60px;
+    color: white;
     
     
     }

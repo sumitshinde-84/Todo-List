@@ -1,11 +1,11 @@
 import PubSub from 'pubsub-js';
 import {
-     mainContent, sideBar,projectInput,projectForm,projectUl
+     mainContent, sideBar,projectInput,projectForm,projectUl,projectTitle
   } from "./domCollection";
 
   
   let iconClick = 'false';
-
+  let count =0;
 // -------------------------this function is used for toggle menu--------------------
 function toggle() {
   if (iconClick === 'false') {
@@ -53,23 +53,32 @@ PubSub.subscribe('buttonClicked', (eventname,data) => {
 
 // ---------------------------function for open project detail form ---------------------------------------------
 function openForm(){
-
 projectForm.style.display='grid'
 
 }
 
 function closeForm(){
   projectForm.style.display='none' 
+  projectForm.reset()
 }
 
 function addProject(){
 
 const projectList = document.createElement('li')
+projectList.dataset.index=count
 projectList.textContent=projectInput.value
 projectUl.appendChild(projectList)
 projectForm.style.display='none'
-
+count++;
 }
+
+// ---------------------------------it will fetch projectName on header----------------------------
+
+PubSub.subscribe('foundTargetedObj',(eventName,myObject)=>[
+  projectTitle.textContent=myObject.name
+
+])
+
 
 PubSub.subscribe("ToggleMenuClicked",toggle)
 PubSub.subscribe('clickAddProject',openForm)
