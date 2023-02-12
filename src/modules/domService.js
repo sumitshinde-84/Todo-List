@@ -1,6 +1,6 @@
 import PubSub from 'pubsub-js';
 import {
-     mainContent, sideBar,projectInput,projectForm,projectUl,projectTitle
+     mainContent, sideBar,projectInput,projectForm,projectUl,projectTitle,projectRename,addProjectBtn
   } from "./domCollection";
 
   
@@ -25,6 +25,7 @@ function toggle() {
 PubSub.subscribe('buttonClicked', (eventname,data) => { 
     let targetedlist = data.target
     targetedlist.className = 'antherClassForUl'
+    projectTitle.textContent=targetedlist.textContent 
     const getSiblings = function (e) {
         // for collecting siblings
         const siblings = []; 
@@ -52,40 +53,56 @@ PubSub.subscribe('buttonClicked', (eventname,data) => {
   });
 
 // ---------------------------function for open project detail form ---------------------------------------------
-function openForm(){
+function openForm(eventName,data){
 projectForm.style.display='grid'
 
 }
 
+// ---------------------------function for close project detail form ---------------------------------------------
+
+
 function closeForm(){
   projectForm.style.display='none' 
-  projectForm.reset()
+  
 }
+
+// ---------------------------function for add project in project-list detail form ---------------------------------------------
+
 
 function addProject(){
 
 const projectList = document.createElement('li')
 projectList.dataset.index=count
-projectList.innerHTML=
-`<p>${projectInput.value}</p> 
-<select>
-<option>Rename</option>
-<option>Delete</option>
-</select>`
+projectList.innerHTML=`<p>${projectInput.value}</p> <select id="${count}" onChange="renameClicked(event)" value=none><option class='project-rename' value='rename' >Rename</option><option style='display:none;' value='nothing' selected>Rename</option><option class='project-delete' value='delete'>Delete</option></select>`
 projectUl.appendChild(projectList)
 projectForm.style.display='none'
-count++;
+count++; 
+
 }
 
 // ---------------------------------it will fetch projectName on header----------------------------
 
-PubSub.subscribe('foundTargetedObj',(eventName,myObject)=>[
+PubSub.subscribe('foundTargetedObj',(eventName,myObject)=>{
+  
   projectTitle.textContent=myObject.name
+}
+)
 
-])
+function updateName(eventName,projectName){
+  console.log('i am domSrvs')
+  projectName.textContent=projectInput.value
+  PubSub.publish('closeForm')
+}
 
 
+
+
+ 
+ 
+
+PubSub.subscribe('updateClicked',updateName)
 PubSub.subscribe("ToggleMenuClicked",toggle)
 PubSub.subscribe('clickAddProject',openForm)
 PubSub.subscribe('addProject',addProject)
 PubSub.subscribe('closeForm',closeForm)
+PubSub.subscribe('renameClicked',openForm)

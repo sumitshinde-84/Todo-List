@@ -42,7 +42,9 @@
                 <ul class="project-ul">
                    <form >
                     <input type="text">
+                    
                     <button class="add" type="reset">Add</button>
+                    <button class="update">update</button>
                     <button class="cancle">Cancel</button>
                    </form>
                 </ul>
@@ -53,7 +55,7 @@
         </div>
         <div class="mainContent">
             <div class="Project-Title">
-                <h2></h2>
+                <h2>Welcome !</h2>
             </div>
 
         </div>
@@ -62,6 +64,17 @@
     </div>
 
 
-    <script src="./main.js"></script>
+    <script  src="./main.js"></script>
+    <script>
+        
+        function  renameClicked(event){
+            const updateProjectBtn = document.querySelector('.update')
+            const addProjectBtn = document.querySelector('.add')
+            addProjectBtn.style.display='none'
+            updateProjectBtn.style.display='block'
+            PubSub.publish('renameClicked',{target:event.target})
+        }
+
+    </script>
 </body>
 </html>

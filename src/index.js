@@ -9,7 +9,11 @@ import domService from './modules/domService';
 import eventController from './modules/eventController';
 import projectStructerer from './modules/projectStructerer'
 
+import { projectRename } from './modules/domCollection';
 
+  function selectClicked(){
+  console.log('yehhh')
+}
 
 
 

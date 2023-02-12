@@ -173,7 +173,7 @@ form input {
     
 }
 
- form button:nth-child(2){
+ form .add{
     padding: 3px 6px;
     width: 70px;
     color: white;
@@ -184,7 +184,20 @@ form input {
 
 
 }
- form button:nth-child(3){
+
+form .update{
+    padding: 3px 6px;
+    width: 70px;
+    color: white;
+    background-color: var(--accentDark);
+    border-radius: 3px;
+    border: none;
+    margin-right: auto;
+    display: none;
+
+
+}
+ form .cancle{
     padding: 3px 6px;
     width: 70px;
     color: white;
