@@ -75,9 +75,9 @@ function addProject(){
 const projectList = document.createElement('li')
 projectList.dataset.index=count
 projectList.innerHTML=`<p id="p${count}">${projectInput.value}</p> <select id="${count}" onChange="renameClicked(event)" value=none>
-<option  style="background-color;border-radius:5px;;outline:none;"class='project-rename' value='rename' >Rename</option>
+<option  style="background-color;border-radius:2px;position:relative;bottom:20px;outline:none;"class='project-rename' value='rename' >Rename</option>
 <option style='display:none;' value='nothing' selected>Rename</option>
-<option style="background-color;border-radius:5px;outline:none;" class='project-delete' value='delete'>Delete</option></select>`
+<option style="background-color;border-radius:2px;position:relative;bottom:20px;utline:none;" class='project-delete' value='delete'>Delete</option></select>`
 projectUl.appendChild(projectList)
 projectForm.style.display='none'
 count++; 
