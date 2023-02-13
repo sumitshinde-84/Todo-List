@@ -1,6 +1,6 @@
 import PubSub from 'pubsub-js';
 import {
-    list,projectBtn,addProjectBtn,cancleProjectBtn,secondList,projectRename, projectForm,updateProjectBtn
+    list,projectBtn,addProjectBtn,cancleProjectBtn,secondList,projectRename, projectForm,updateProjectBtn,selectbtn
  } from "./domCollection";
 
 const menuIcon = document.querySelector('.menuImg');
@@ -25,10 +25,14 @@ PubSub.subscribe('projectRenameFunctionHasBeenRun',(eventName,project)=>{
   updateProjectBtn.addEventListener('click',(event)=>{
    
     event.preventDefault()
+    for(let i = 0 ; i<selectbtn.length;i++){
+      selectbtn[i].setAttribute('onChange',"renameClicked(event)")
+     }
     console.log('i am eventController')
       PubSub.publish('projectRenameUpdateButtonClicked',project)
      PubSub.publish('ObjNameChange',project)
-  
+     
+ 
   })
 
 })
@@ -43,6 +47,10 @@ addProjectBtn.addEventListener('click',(event)=>{
 cancleProjectBtn.addEventListener('click',(event)=>{
   event.preventDefault()
   PubSub.publish('closeForm')
+  for(let i =0 ; i<selectbtn.length;i++){
+    // console.log(selectbtn)
+    // selectbtn[i].setAttribute('onChange','renameClicked(event)')
+   }
 })
 
 

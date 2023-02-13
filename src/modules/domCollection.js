@@ -17,3 +17,4 @@ export const updateProjectBtn = document.querySelector('.update')
 export const cancleProjectBtn = document.querySelector('.cancle')
 export const projectTitle = document.querySelector('.Project-Title h2')
 export const projectRename = document.querySelector('.select')
+export const  selectbtn = document.querySelectorAll('select');
