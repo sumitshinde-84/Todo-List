@@ -22,7 +22,7 @@ function toggle() {
 }
 // ---------------------this function is to add click animation in list items --------------------------------
 
-PubSub.subscribe('buttonClicked', (eventname,data) => { 
+PubSub.subscribe('mainMenuOptionClicked', (eventname,data) => { 
     let targetedlist = data.target
     targetedlist.className = 'antherClassForUl'
     projectTitle.textContent=targetedlist.textContent 
@@ -55,6 +55,7 @@ PubSub.subscribe('buttonClicked', (eventname,data) => {
 // ---------------------------function for open project detail form ---------------------------------------------
 function openForm(eventName,data){
 projectForm.style.display='grid'
+projectForm.reset()
 
 }
 
@@ -73,7 +74,10 @@ function addProject(){
 
 const projectList = document.createElement('li')
 projectList.dataset.index=count
-projectList.innerHTML=`<p>${projectInput.value}</p> <select id="${count}" onChange="renameClicked(event)" value=none><option class='project-rename' value='rename' >Rename</option><option style='display:none;' value='nothing' selected>Rename</option><option class='project-delete' value='delete'>Delete</option></select>`
+projectList.innerHTML=`<p id="p${count}">${projectInput.value}</p> <select id="${count}" onChange="renameClicked(event)" value=none>
+<option  style="background-color;border-radius:5px;;outline:none;"class='project-rename' value='rename' >Rename</option>
+<option style='display:none;' value='nothing' selected>Rename</option>
+<option style="background-color;border-radius:5px;outline:none;" class='project-delete' value='delete'>Delete</option></select>`
 projectUl.appendChild(projectList)
 projectForm.style.display='none'
 count++; 
@@ -88,21 +92,25 @@ PubSub.subscribe('foundTargetedObj',(eventName,myObject)=>{
 }
 )
 
-function updateName(eventName,projectName){
-  console.log('i am domSrvs')
-  projectName.textContent=projectInput.value
+function updateName(eventName,project){
+ 
+  let projectDataIndex = project.dataIndex
+  const projectNamePara = document.querySelector(`#p${projectDataIndex}`)
+  console.log("its found",projectNamePara)
+
+  projectNamePara.textContent=projectInput.value
   PubSub.publish('closeForm')
+
 }
 
 
 
-
  
  
 
-PubSub.subscribe('updateClicked',updateName)
+PubSub.subscribe('projectObjectRenamePropertyDone',updateName)
 PubSub.subscribe("ToggleMenuClicked",toggle)
-PubSub.subscribe('clickAddProject',openForm)
+PubSub.subscribe('clickAddProjectButton',openForm)
 PubSub.subscribe('addProject',addProject)
 PubSub.subscribe('closeForm',closeForm)
-PubSub.subscribe('renameClicked',openForm)
+PubSub.subscribe('projectRenameClicked',openForm)

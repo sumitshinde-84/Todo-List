@@ -11,24 +11,23 @@ menuIcon.addEventListener('click', ()=>{
 for(let i = 0; i<list.length;i++){
  list[i].addEventListener('click', (event) => {
 // Publish the "buttonClicked" event with some data
- PubSub.publish('buttonClicked', { target: event.target });
+ PubSub.publish('mainMenuOptionClicked', { target: event.target });
 });}
 
 projectBtn.addEventListener('click',()=>{
   addProjectBtn.style.display='block'
   updateProjectBtn.style.display='none'
-  PubSub.publish('clickAddProject')
+  PubSub.publish('clickAddProjectButton')
 })
 
-PubSub.subscribe('prrenameClicked',(eventName,projectName)=>{
+PubSub.subscribe('projectRenameFunctionHasBeenRun',(eventName,project)=>{
 
   updateProjectBtn.addEventListener('click',(event)=>{
    
     event.preventDefault()
     console.log('i am eventController')
-    PubSub.subscribe('prrenameClicked',(eventName,projectName)=>{
-      PubSub.publish('updateClicked',projectName)
-    })
+      PubSub.publish('projectRenameUpdateButtonClicked',project)
+     PubSub.publish('ObjNameChange',project)
   
   })
 
@@ -51,7 +50,7 @@ for(let i=0; i<secondList.length;i++){
 
   secondList[i].addEventListener('click',(e)=>{
     
-    PubSub.publish('projectRenameClicked',{ target: e.target })
+    PubSub.publish('projectSelected',{ target: e.target })
 
    
 })
