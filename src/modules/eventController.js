@@ -1,6 +1,6 @@
 import PubSub from 'pubsub-js';
 import {
-    list,projectBtn,addProjectBtn,cancleProjectBtn,secondList,projectRename, projectForm,updateProjectBtn,selectbtn
+    list,projectBtn,addProjectBtn,cancleProjectBtn,secondList,projectRename, projectForm,updateProjectBtn
  } from "./domCollection";
 
 const menuIcon = document.querySelector('.menuImg');
@@ -20,22 +20,21 @@ projectBtn.addEventListener('click',()=>{
   PubSub.publish('clickAddProjectButton')
 })
 
-PubSub.subscribe('projectRenameFunctionHasBeenRun',(eventName,project)=>{
 
+
+
+  function updateEventListneradd(eventName,project){
   updateProjectBtn.addEventListener('click',(event)=>{
    
     event.preventDefault()
-    for(let i = 0 ; i<selectbtn.length;i++){
-      selectbtn[i].setAttribute('onChange',"renameClicked(event)")
-     }
     console.log('i am eventController')
       PubSub.publish('projectRenameUpdateButtonClicked',project)
      PubSub.publish('ObjNameChange',project)
      
  
-  })
+  })}
 
-})
+
 
 addProjectBtn.addEventListener('click',(event)=>{
   event.preventDefault()
@@ -45,12 +44,10 @@ addProjectBtn.addEventListener('click',(event)=>{
        
 
 cancleProjectBtn.addEventListener('click',(event)=>{
+
   event.preventDefault()
   PubSub.publish('closeForm')
-  for(let i =0 ; i<selectbtn.length;i++){
-    // console.log(selectbtn)
-    // selectbtn[i].setAttribute('onChange','renameClicked(event)')
-   }
+  
 })
 
 
@@ -65,10 +62,25 @@ for(let i=0; i<secondList.length;i++){
 
 }
 
+for(let i=0; i<secondList.length;i++){
+
+  secondList[i].addEventListener('dblclick',(event)=>{
+    const updateProjectBtn = document.querySelector('.update')
+        const addProjectBtn = document.querySelector('.add')
+        addProjectBtn.style.display='none'
+        updateProjectBtn.style.display='block'
+    PubSub.publish('projectRenameClicked',event)
+    console.log(event.target)
+
+   
+})
+
+}
+
 
        
       
-    
+PubSub.subscribe('projectRenameFunctionHasBeenRun',updateEventListneradd)
 
 
 

@@ -29,14 +29,10 @@ function createProject(){
 function ProjectRename(eventName,data){
 
     
-    let projectSelectValue = data.target
-    let projectName = projectSelectValue.parentElement.firstChild
-    
+    let targetedProjectList = data.target
     for(let i=0;i<Projects.length;i++){
-
-        if(Projects[i].dataIndex == projectSelectValue.id){
+        if(Projects[i].dataIndex == targetedProjectList.dataset.index){
             let project = Projects[i]
-            
            PubSub.publish('projectRenameFunctionHasBeenRun',project)
         
            
@@ -51,6 +47,7 @@ function ProjectRename(eventName,data){
 
 function letUpdateProjectObjNameProperty(eventName,project){
     console.log(project,'look i am heare')
+
 project.name = projectInput.value
 
 PubSub.publish('projectObjectRenamePropertyDone',project)
