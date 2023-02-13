@@ -72,7 +72,9 @@
             const addProjectBtn = document.querySelector('.add')
             addProjectBtn.style.display='none'
             updateProjectBtn.style.display='block'
-            PubSub.publish('renameClicked',{target:event.target})
+            
+           
+            PubSub.publish('projectRenameClicked',event)
         }
 
     </script>
