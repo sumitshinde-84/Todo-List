@@ -66,15 +66,20 @@
 
     <script  src="./main.js"></script>
     <script>
-        
+         let count = 0
         function  renameClicked(event){
             const updateProjectBtn = document.querySelector('.update')
             const addProjectBtn = document.querySelector('.add')
             addProjectBtn.style.display='none'
             updateProjectBtn.style.display='block'
+            const  selectbtn = document.querySelectorAll('select');
+            for(let i =0 ;i<selectbtn.length;i++){
+                selectbtn[i].removeAttribute('onChange')
+                PubSub.publish('projectRenameClicked',event)
+            }
+            console.log(count)
             
-           
-            PubSub.publish('projectRenameClicked',event)
+            count++
         }
 
     </script>
