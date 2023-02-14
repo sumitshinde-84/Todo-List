@@ -66,17 +66,20 @@
 
     <script  src="./main.js"></script>
     <script>
-        //  let count = 0
-        // function  renameClicked(data){
-        //     const updateProjectBtn = document.querySelector('.update')
-        //     const addProjectBtn = document.querySelector('.add')
-        //     addProjectBtn.style.display='none'
-        //     updateProjectBtn.style.display='block'
-        //     PubSub.publish('projectRenameClicked',data)
-        //     console.log(count)
-            
-        //     count++
-        // }
+        
+        function ProjectEventlistner(event){
+
+ const updateProjectBtn = document.querySelector('.update')
+
+  updateProjectBtn.id = event.currentTarget.id[event.currentTarget.id.length - 1]
+  const addProjectBtn = document.querySelector('.add')
+  addProjectBtn.style.display='none'
+  updateProjectBtn.style.display='block'
+  PubSub.publish('openForm')
+
+
+
+        }
 
     </script>
 </body>
