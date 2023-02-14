@@ -14,25 +14,14 @@ for(let i = 0; i<list.length;i++){
  PubSub.publish('mainMenuOptionClicked', { target: event.target });
 });}
 
+
+
 projectBtn.addEventListener('click',()=>{
   addProjectBtn.style.display='block'
   updateProjectBtn.style.display='none'
   PubSub.publish('clickAddProjectButton')
 })
 
-
-
-
-  function updateEventListneradd(eventName,project){
-  updateProjectBtn.addEventListener('click',(event)=>{
-   
-    event.preventDefault()
-    console.log('i am eventController')
-      PubSub.publish('projectRenameUpdateButtonClicked',project)
-     PubSub.publish('ObjNameChange',project)
-     
- 
-  })}
 
 
 
@@ -51,37 +40,16 @@ cancleProjectBtn.addEventListener('click',(event)=>{
 })
 
 
-for(let i=0; i<secondList.length;i++){
 
-  secondList[i].addEventListener('click',(e)=>{
-    
-    PubSub.publish('projectSelected',{ target: e.target })
-
-   
+updateProjectBtn.addEventListener('click',(Event)=>{
+  Event.preventDefault()
+  let updateBtnCurrentId = updateProjectBtn.id
+  PubSub.publish('projectUpdateBtnClicked',updateBtnCurrentId)
 })
-
-}
-
-for(let i=0; i<secondList.length;i++){
-
-  secondList[i].addEventListener('dblclick',(event)=>{
-    const updateProjectBtn = document.querySelector('.update')
-        const addProjectBtn = document.querySelector('.add')
-        addProjectBtn.style.display='none'
-        updateProjectBtn.style.display='block'
-    PubSub.publish('projectRenameClicked',event)
-    console.log(event.target)
-
-   
-})
-
-}
 
 
        
       
-PubSub.subscribe('projectRenameFunctionHasBeenRun',updateEventListneradd)
-
 
 
  

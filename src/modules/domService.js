@@ -1,4 +1,4 @@
-import PubSub from 'pubsub-js';
+import PubSub, { publish } from 'pubsub-js';
 import {
      mainContent, sideBar,projectInput,projectForm,projectUl,projectTitle,projectRename,addProjectBtn
   } from "./domCollection";
@@ -53,7 +53,7 @@ PubSub.subscribe('mainMenuOptionClicked', (eventname,data) => {
   });
 
 // ---------------------------function for open project detail form ---------------------------------------------
-function openForm(eventName,data){
+function openForm(){
 projectForm.style.display='grid'
 projectForm.reset()
 
@@ -72,15 +72,18 @@ function closeForm(){
 
 function addProject(){
 
-const projectList = document.createElement('li')
-projectList.dataset.index=count
-projectList.innerHTML=`<p id="p${count}">${projectInput.value}</p> <select id="${count}"  value=none>
+const project = document.createElement('li')
+project.setAttribute('ondblclick','ProjectEventlistner(event)')
+project.className='list'
+project.id=`list${count}`
+project.innerHTML=`<p id="p${count}">${projectInput.value}</p> <select id="${count}"  value=none>
 <option  style="background-color;border-radius:2px;position:relative;bottom:20px;outline:none;"class='project-rename' value='rename' >Rename</option>
 <option style='display:none;' value='nothing' selected>Rename</option>
 <option style="background-color;border-radius:2px;position:relative;bottom:20px;outline:none;" class='project-delete' value='delete'>Delete</option></select>`
-projectUl.appendChild(projectList)
+projectUl.appendChild(project)
 projectForm.style.display='none'
 count++; 
+PubSub.publish('addProjectFunctionHasbeenRun',project)
 
 }
 
@@ -92,24 +95,25 @@ PubSub.subscribe('foundTargetedObj',(eventName,myObject)=>{
 }
 )
 
-function updateName(eventName,project){
- 
-  let projectDataIndex = project.dataIndex
-  const projectNamePara = document.querySelector(`#p${projectDataIndex}`)
-  console.log("its found",projectNamePara)
-  projectNamePara.textContent=projectInput.value
-  PubSub.publish('closeForm')
+function updateProjectName(eventName,targetProjectId){
+
+  console.log(targetProjectId)
+  const project = projectUl.querySelector(`#list${targetProjectId}`);  
+  project.firstChild.textContent=projectInput.value
+  console.log(project)
+  PubSub.publish('projectTextcontentHasBeenRenamed',targetProjectId)
 
 }
 
-
-
  
  
 
-PubSub.subscribe('projectObjectRenamePropertyDone',updateName)
+
 PubSub.subscribe("ToggleMenuClicked",toggle)
 PubSub.subscribe('clickAddProjectButton',openForm)
 PubSub.subscribe('addProject',addProject)
 PubSub.subscribe('closeForm',closeForm)
-PubSub.subscribe('projectRenameClicked',openForm)
+PubSub.subscribe('openForm',openForm)
+PubSub.subscribe('projectUpdateBtnClicked',updateProjectName)
+
+
