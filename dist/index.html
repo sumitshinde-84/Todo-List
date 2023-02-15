@@ -40,7 +40,7 @@
 
                 </div>
                 <ul class="project-ul">
-                   <form >
+                   <form class="project-form">
                     <input type="text">
                     
                     <button class="add" type="reset">Add</button>
@@ -56,8 +56,28 @@
         <div class="mainContent">
             <div class="Project-Title">
                 <h2>Welcome !</h2>
-            </div>
 
+            </div>
+        
+                <form class="task-form" action="">
+                    <p class='input-Para'>
+                        <label for="name">Name</label>
+                        <input type="text" name="name" placeholder="What to do ?" id="name-input">
+                    </p>
+                    <p class='input-Para'>
+                        <label for="note">Details(Optional)</label>
+                        <input type="text" name="name" placeholder="eg: i'm just gonna procastinate, aren't it ?" id="details-input">
+                    </p>
+                    <p class='input-Para'>
+                        <label for="name">Date</label>
+                        <input type="date" name="name" id="date-input">
+                    </p>
+                   
+                </form>
+
+          
+           
+            <button class="addTaskButton">Add Task</button>
         </div>
         <div class="footer"></div>
 
@@ -69,12 +89,11 @@
         
         function ProjectEventlistner(event){
 
- const updateProjectBtn = document.querySelector('.update')
-
-  updateProjectBtn.id = event.currentTarget.id[event.currentTarget.id.length - 1]
-  const addProjectBtn = document.querySelector('.add')
-  addProjectBtn.style.display='none'
-  updateProjectBtn.style.display='block'
+    const updateProjectBtn = document.querySelector('.update')
+     updateProjectBtn.id = event.currentTarget.id[event.currentTarget.id.length - 1]
+    const addProjectBtn = document.querySelector('.add')
+    addProjectBtn.style.display='none'
+    updateProjectBtn.style.display='block'
   PubSub.publish('openForm')
 
 

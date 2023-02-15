@@ -1,7 +1,8 @@
 import PubSub, { publish } from 'pubsub-js';
 import {
-     mainContent, sideBar,projectInput,projectForm,projectUl,projectTitle,projectRename,addProjectBtn
+     mainContent, sideBar,projectInput,projectForm,projectUl,projectTitle,projectRename,addProjectBtn,taskForm
   } from "./domCollection";
+import { task } from './task';
 
   
   let iconClick = 'false';
@@ -76,7 +77,7 @@ const project = document.createElement('li')
 project.setAttribute('ondblclick','ProjectEventlistner(event)')
 project.className='list'
 project.id=`list${count}`
-project.innerHTML=`<p id="p${count}">${projectInput.value}</p> <select id="${count}"  value=none>
+project.innerHTML=`<p class="para" id="p${count}">${projectInput.value}</p> <select id="${count}"  value=none>
 <option  style="background-color;border-radius:2px;position:relative;bottom:20px;outline:none;"class='project-rename' value='rename' >Rename</option>
 <option style='display:none;' value='nothing' selected>Rename</option>
 <option style="background-color;border-radius:2px;position:relative;bottom:20px;outline:none;" class='project-delete' value='delete'>Delete</option></select>`
@@ -89,11 +90,7 @@ PubSub.publish('addProjectFunctionHasbeenRun',project)
 
 // ---------------------------------it will fetch projectName on header----------------------------
 
-PubSub.subscribe('foundTargetedObj',(eventName,myObject)=>{
-  
-  projectTitle.textContent=myObject.name
-}
-)
+
 
 function updateProjectName(eventName,targetProjectId){
 
@@ -105,9 +102,27 @@ function updateProjectName(eventName,targetProjectId){
 
 }
 
- 
- 
 
+function showProjectDetails(eventName,targetedElement){
+  // if(targetedElement.nodeType)
+  console.log(targetedElement)
+  if(targetedElement.className=='list'){
+    projectTitle.textContent=targetedElement.firstChild.textContent
+  }else if(targetedElement.className =='para'){
+    projectTitle.textContent=targetedElement.textContent
+  }else{
+    return
+  }
+  
+}
+
+
+//  --------------------------  function for open form Task form ---------------------------------
+ 
+function openTaskForm(){
+  taskForm.style.scale='1'
+  taskForm.style.height='230px'
+}
 
 PubSub.subscribe("ToggleMenuClicked",toggle)
 PubSub.subscribe('clickAddProjectButton',openForm)
@@ -115,5 +130,7 @@ PubSub.subscribe('addProject',addProject)
 PubSub.subscribe('closeForm',closeForm)
 PubSub.subscribe('openForm',openForm)
 PubSub.subscribe('projectUpdateBtnClicked',updateProjectName)
+PubSub.subscribe('targetedListClicked',showProjectDetails);
+PubSub.subscribe('addTaskButtonClicked',openTaskForm)
 
 

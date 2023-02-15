@@ -147,7 +147,7 @@ select:focus{
   right: -0.03em;
 }
 
-form{
+.project-form{
     
     height: 50px;
     display: none;
@@ -161,7 +161,7 @@ form{
 
 }
 
-form input {
+.project-form input {
     font-family: 'Alata', sans-serif;
    height: 27px;
    width: 100%;
@@ -173,7 +173,7 @@ form input {
     
 }
 
- form .add{
+.project-form .add{
     padding: 3px 6px;
     width: 70px;
     color: white;
@@ -185,7 +185,7 @@ form input {
 
 }
 
-form .update{
+.project-form .update{
     padding: 3px 6px;
     width: 70px;
     color: white;
@@ -197,7 +197,7 @@ form .update{
 
 
 }
- form .cancle{
+.project-form .cancle{
     padding: 3px 6px;
     width: 70px;
     color: white;

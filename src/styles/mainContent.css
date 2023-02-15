@@ -28,3 +28,78 @@
     
     
     }
+
+
+    .addTaskButton{
+       padding: 8px 14px;
+       margin-right: auto;
+       margin-top: 20px;
+       border-radius: 5px;
+       font-size: 13px;
+       border-color: var(--sidebar);
+       box-shadow: 2px 2px 2px var(--accentDark);
+    }
+
+    .task-form {
+        width:90%;
+        height: 0px;
+        scale: 0;
+        align-self: center;
+        margin-right:140px;
+        margin-top: 20px;
+        border-radius: 5px;
+        background-color: var(--sidebar);
+        padding: 20px 0px;
+        color: var(--textColor);
+        font-family:  'Alata', sans-serif;
+       
+    }
+
+    .input-Para{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 2px;
+        gap: 2px 0px;
+       
+        
+    }
+
+    label{
+        width: 95%;
+        font-size: 16px;
+    
+    }
+    #name-input{
+        width: 95%;
+        height: 30px;
+        outline: 2px solid black;
+        padding: 2px;
+        border: none;
+        border-radius: 2px;
+        
+       
+    }
+
+    #details-input{
+        width: 95%;
+        height: 50px;
+        outline: 2px solid black;
+        padding: 2px;
+        border: none;
+        border-radius: 2px;
+    }
+
+    #date-input{
+        width: 95%;
+        height: 30px;
+        outline: 2px solid black;
+        padding: 2px;
+        border: none;
+        border-radius: 2px;
+    }
+
+
+     
+

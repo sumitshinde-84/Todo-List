@@ -1,6 +1,6 @@
 import PubSub from 'pubsub-js';
 import {
-    list,projectBtn,addProjectBtn,cancleProjectBtn,secondList,projectRename, projectForm,updateProjectBtn
+    list,projectBtn,addProjectBtn,cancleProjectBtn,secondList,projectRename, projectForm,updateProjectBtn, projectUl, addTaskButton
  } from "./domCollection";
 
 const menuIcon = document.querySelector('.menuImg');
@@ -48,9 +48,17 @@ updateProjectBtn.addEventListener('click',(Event)=>{
 })
 
 
-       
+projectUl.addEventListener('click',(event)=>{
+let targetedElement = event.target
+PubSub.publish('targetedListClicked',targetedElement)
+ 
+})   
       
 
+addTaskButton.addEventListener('click',(Event)=>{
+
+  PubSub.publish('addTaskButtonClicked')
+})
 
  
 
