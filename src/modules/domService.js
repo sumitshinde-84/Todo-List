@@ -1,12 +1,15 @@
 import PubSub, { publish } from 'pubsub-js';
 import {
-     mainContent, sideBar,projectInput,projectForm,projectUl,projectTitle,projectRename,addProjectBtn,taskForm
+     mainContent, sideBar,projectInput,projectForm,projectUl,
+     projectTitle,projectRename,addProjectBtn,taskForm,taskNameInput
+     ,taskDetailInput,taskDateInput,taskList, taskListSect,taskMainDiv
   } from "./domCollection";
 import { task } from './task';
 
   
   let iconClick = 'false';
   let count =0;
+  let taskCount =0;
 // -------------------------this function is used for toggle menu--------------------
 function toggle() {
   if (iconClick === 'false') {
@@ -121,7 +124,46 @@ function showProjectDetails(eventName,targetedElement){
  
 function openTaskForm(){
   taskForm.style.scale='1'
-  taskForm.style.height='230px'
+  taskForm.style.height='250px'
+}
+
+function closeTaskForm(){
+  taskForm.style.scale='0'
+  taskForm.style.height='0px'
+}
+
+function createTaskDom(eventName,project){
+  const taskList = document.createElement('li')
+  taskList.id = `taskList${taskCount}`
+  taskList.className='task-list-item'
+  taskList.id = taskCount
+  const blockForNameAndDetails = document.createElement('div')
+  const blockForDateAndRestThing = document.createElement('div')
+  const namePara = document.createElement('p')
+  const dateBox = document.createElement('div')
+  dateBox.className='dateBox'
+  const datePara = document.createElement('p')
+  const detailPara = document.createElement('p')
+  detailPara.textContent = taskDetailInput.value
+  namePara.textContent = taskNameInput.value
+  datePara.textContent = taskDateInput.value
+  blockForNameAndDetails.appendChild(namePara)
+  blockForNameAndDetails.appendChild(detailPara)
+  blockForDateAndRestThing.appendChild(dateBox)
+  dateBox.appendChild(datePara)
+  taskList.appendChild(blockForNameAndDetails)
+  taskList.appendChild(blockForDateAndRestThing)
+  project.block.appendChild(taskList)
+  
+  taskMainDiv.appendChild(project.block)
+
+}
+
+function clearTaskMainBlock(){
+  while (taskMainDiv.firstChild) {
+    taskMainDiv.removeChild(taskMainDiv.firstChild);
+}
+
 }
 
 PubSub.subscribe("ToggleMenuClicked",toggle)
@@ -131,6 +173,11 @@ PubSub.subscribe('closeForm',closeForm)
 PubSub.subscribe('openForm',openForm)
 PubSub.subscribe('projectUpdateBtnClicked',updateProjectName)
 PubSub.subscribe('targetedListClicked',showProjectDetails);
+// PubSub.subscribe('targetedListClicked',showTaskDetails)
 PubSub.subscribe('addTaskButtonClicked',openTaskForm)
+PubSub.subscribe('taskCancleButtonClicked',closeTaskForm)
+// PubSub.subscribe('taskAddButtonClicked',createTask)
 
+PubSub.subscribe('targetedListClicked',clearTaskMainBlock)
+PubSub.subscribe('taskObjCreated',createTaskDom)
 

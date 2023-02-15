@@ -58,7 +58,12 @@
                 <h2>Welcome !</h2>
 
             </div>
-        
+           <div class="task-main-div">
+
+            
+           </div>
+           
+   
                 <form class="task-form" action="">
                     <p class='input-Para'>
                         <label for="name">Name</label>
@@ -66,13 +71,17 @@
                     </p>
                     <p class='input-Para'>
                         <label for="note">Details(Optional)</label>
-                        <input type="text" name="name" placeholder="eg: i'm just gonna procastinate, aren't it ?" id="details-input">
+                        <input type="text" name="note" placeholder="eg: i'm just gonna procastinate, aren't it ?" id="details-input">
                     </p>
                     <p class='input-Para'>
-                        <label for="name">Date</label>
-                        <input type="date" name="name" id="date-input">
+                        <label for="Date">Date</label>
+                        <input type="date" name="Date" id="date-input">
                     </p>
                    
+                    <p class="button-para">
+                        <button   class="task-add-btn" >Add</button>
+                        <button class="task-cancle-btn" >Cancle</button>
+                    </p>
                 </form>
 
           
@@ -90,11 +99,13 @@
         function ProjectEventlistner(event){
 
     const updateProjectBtn = document.querySelector('.update')
+     
      updateProjectBtn.id = event.currentTarget.id[event.currentTarget.id.length - 1]
     const addProjectBtn = document.querySelector('.add')
     addProjectBtn.style.display='none'
     updateProjectBtn.style.display='block'
   PubSub.publish('openForm')
+  PubSub.publish('projectClicked')
 
 
 

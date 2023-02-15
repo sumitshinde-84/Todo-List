@@ -1,14 +1,18 @@
 
 import PubSub from "pubsub-js";
 import project from './project'
-import {projectInput,projectForm,projectRename} from "./domCollection"; 
-
-const Projects = []
+import {projectInput,projectForm,projectRename, taskNameInput,taskDetailInput,taskDateInput, taskAddbutton} from "./domCollection"; 
+import { task } from "./task";
+ export const Projects = []
 let count = 0;
+let taskCount;
 
 function createProject(){
-    
-    const ProjectObj = project(projectInput.value,[],count) 
+    taskCount =0;
+    const block = document.createElement('ul')
+    block.className='task-list'
+    block.id =`block${count}`
+    const ProjectObj = project(projectInput.value,[],count,block) 
     Projects.push(ProjectObj)
     projectForm.reset()
     count++;
@@ -37,8 +41,27 @@ PubSub.publish('closeForm')
 }
 
 
+// ------------------------------------ create Task list -----------------------------------
 
+function createTask(){
+ 
+    const taskObj = task(taskNameInput.value,taskDateInput.value,taskDetailInput.value,taskCount)
+    console.log(taskNameInput.value,'this is taskname input')
+    let targetedId = taskAddbutton.id
+    for (const task of Projects){
+        if(task.dataIndex == targetedId){
+            Projects[targetedId].task.push(taskObj)
+          
+            PubSub.publish('taskObjCreated',Projects[targetedId])
+
+        }
+    }
+    
+    taskCount++
+}
 
 PubSub.subscribe('projectSelected',showProjectDetail)
 PubSub.subscribe('addProject',createProject)
 PubSub.subscribe('projectTextcontentHasBeenRenamed',letsRenameProjectNameProperty)
+PubSub.subscribe('taskAddButtonClicked',createTask)
+

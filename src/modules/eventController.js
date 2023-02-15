@@ -1,6 +1,6 @@
 import PubSub from 'pubsub-js';
 import {
-    list,projectBtn,addProjectBtn,cancleProjectBtn,secondList,projectRename, projectForm,updateProjectBtn, projectUl, addTaskButton
+    list,projectBtn,addProjectBtn,cancleProjectBtn,secondList,projectRename, projectForm,updateProjectBtn, projectUl, addTaskButton,taskCancleButton,taskAddbutton, taskForm
  } from "./domCollection";
 
 const menuIcon = document.querySelector('.menuImg');
@@ -50,6 +50,8 @@ updateProjectBtn.addEventListener('click',(Event)=>{
 
 projectUl.addEventListener('click',(event)=>{
 let targetedElement = event.target
+const taskAddbutton = document.querySelector('.task-add-btn')
+taskAddbutton.id =  event.target.id[event.target.id.length - 1]
 PubSub.publish('targetedListClicked',targetedElement)
  
 })   
@@ -59,6 +61,22 @@ addTaskButton.addEventListener('click',(Event)=>{
 
   PubSub.publish('addTaskButtonClicked')
 })
+
+taskCancleButton.addEventListener('click',(Event)=>{
+  Event.preventDefault()
+  taskForm.reset()
+  PubSub.publish('taskCancleButtonClicked')
+})
+
+
+taskAddbutton.addEventListener('click',(Event)=>{
+   Event.preventDefault()
+   PubSub.publish('taskAddButtonClicked')
+
+})
+
+
+
 
  
 
