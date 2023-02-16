@@ -13,19 +13,17 @@
 
 
 .Project-Title{
-
-    width:70%;
-    background-color: var(--accentDark);
-    border-radius: 5px;
-    height: 70px;
-    align-self: center;
-    margin-right:350px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    padding-left: 60px;
-    color: white;
-    
+   width: 80%;
+   background-color: var(--accentDark);
+   border-radius: 5px;
+   height: 70px;
+   align-self: center;
+   margin-right: 240px;
+   text-align: center;
+   display: flex;
+   align-items: center;
+   padding-left: 60px;
+   color: white;
     
     }
 
@@ -41,17 +39,17 @@
     }
 
     .task-form {
-        width:70%;
-        height: 0px;
-        scale: 0;
-        align-self: center;
-        margin-right:350px;
-        margin-top: 20px;
-        border-radius: 5px;
-        background-color: var(--sidebar);
-        padding: 20px 0px;
-        color: var(--textColor);
-        font-family:  'Alata', sans-serif;
+      width: 80%;
+      height: 0px;
+      scale: 0;
+      align-self: center;
+      margin-right: 240px;
+      margin-top: 20px;
+      border-radius: 5px;
+      background-color: var(--sidebar);
+      padding: 20px 0px;
+      color: var(--textColor);
+      font-family: 'Alata', sans-serif;
        
     }
 
@@ -138,21 +136,22 @@
         margin-top: 10px;
      }
      .task-main-div{
-      width:80%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-right: 210px;
+      width: 87%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 100px;
       
      }
 
      .task-list{
-        width: 92%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-right: 160px;
-        
+      width: 100%;
+      border: 1px solid var(--textColor);
+      border-radius: 5px;
+      height: 45px;
+      display: flex;
+      justify-content: center;
+      position: relative;
      }
      .task-list-item{
       
@@ -199,12 +198,14 @@
      
 
      .task-list-item:hover{
-        width:95%;
-        border: 1px solid var(--textColor);
-        border-radius: 5px;
-        display: flex;
-        justify-content: space-between;
-        background-color: var(--sidebar);
+      width: 100%;
+      border: 1px solid var(--textColor);
+      border-radius: 5px;
+      height: 45px;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      background-color: var(--sidebar);
 
      }
 
