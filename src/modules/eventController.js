@@ -2,8 +2,9 @@ import PubSub from 'pubsub-js';
 import {
     list,projectBtn,addProjectBtn,cancleProjectBtn,secondList
     ,projectRename, projectForm,updateProjectBtn, projectUl
-    , addTaskButton,taskCancleButton,taskAddbutton, taskForm,
-    statusInput
+    , addTaskButton,taskCancleButton,taskAddbutton, taskForm,taskUpdateBtn,allTask,
+    statusInput,
+    taskMainDiv
  } from "./domCollection";
 
 
@@ -79,6 +80,24 @@ taskAddbutton.addEventListener('click',(Event)=>{
    PubSub.publish('taskAddButtonClicked')
 
 })
+
+taskUpdateBtn.addEventListener('click',(event)=>{
+  event.preventDefault()
+  console.log(event.target)
+  let taskButtonId = event.target.id
+  PubSub.publish('taskUpdateClicked',taskButtonId)
+}
+)
+
+
+allTask.addEventListener('click',()=>{
+  
+  PubSub.publish('mainListClicked')
+  const allTaskUl = document.createElement('ul')
+  taskMainDiv.appendChild(allTaskUl)
+})
+
+
 
 
 

@@ -110,6 +110,16 @@
     
      }
 
+     .task-update-btn{
+      padding: 3px 6px;
+      width: 70px;
+      color: white;
+      background-color: var(--accentDark);
+      border-radius: 3px;
+      border: none;
+      display: none;
+     }
+
      .detailPara{
          
       font-size: 11px;
@@ -146,22 +156,23 @@
 
      .task-list{
       width: 100%;
-      border: 1px solid var(--textColor);
+      /* border: 1px solid var(--textColor); */
       border-radius: 5px;
       height: 45px;
       display: flex;
       justify-content: center;
       position: relative;
+      left: -20px;
      }
      .task-list-item{
       
-        width:95%;
+        width:92%;
         border: 1px solid var(--textColor);
         border-radius: 5px;
         height: 45px;
         display: flex;
         justify-content: center;
-        position: relative;
+        
 
      }
 
@@ -198,14 +209,13 @@
      
 
      .task-list-item:hover{
-      width: 100%;
-      border: 1px solid var(--textColor);
-      border-radius: 5px;
-      height: 45px;
-      display: flex;
-      justify-content: center;
-      position: relative;
-      background-color: var(--sidebar);
+      width:92%;
+        border: 1px solid var(--textColor);
+        border-radius: 5px;
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        background-color: var(--sidebar);
 
      }
 

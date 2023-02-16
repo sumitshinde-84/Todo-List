@@ -10,7 +10,7 @@ import { task } from './task';
   
   let iconClick = 'false';
   let count =0;
-  let taskCount =0;
+ 
   let checkboxStatus = 'false'
 // -------------------------this function is used for toggle menu--------------------
 function toggle() {
@@ -111,7 +111,7 @@ function updateProjectName(eventName,targetProjectId){
 function showProjectDetails(eventName,targetedElement){
   // if(targetedElement.nodeType)
   console.log(targetedElement)
-  if(targetedElement.className=='list'){
+  if(targetedElement.className =='list'){
     projectTitle.textContent=targetedElement.firstChild.textContent
   }else if(targetedElement.className =='para'){
     projectTitle.textContent=targetedElement.textContent
@@ -139,15 +139,15 @@ function closeTaskForm(){
 
 function createTaskDom(eventName,project){
   const taskList = document.createElement('li')
+  taskList.setAttribute('ondblclick','taskListEventListnerFunction(event)')
   const statusCheckbox = document.createElement('div')
   statusCheckbox.className='status'
-  statusCheckbox.id=`task${taskCount}`
+  statusCheckbox.id=`status${project.taskcount}`
   statusCheckbox.setAttribute('onClick','statusInputEventListnerFunction(event)')
   const threeDot = document.createElement('div')
   threeDot.className='threeDot'
-  taskList.id = `taskList${taskCount}`
+  taskList.id = `taskList${project.taskcount}`
   taskList.className='task-list-item'
-  taskList.id = taskCount
   const blockForNameAndDetails = document.createElement('div')
   const blockForDateAndRestThing = document.createElement('div')
   const namePara = document.createElement('p')
@@ -170,6 +170,8 @@ function createTaskDom(eventName,project){
   taskList.appendChild(threeDot);
   project.block.appendChild(taskList)
   taskMainDiv.appendChild(project.block)
+  project.taskcount++
+  PubSub.publish('taskCancleButtonClicked')
 
 }
 
@@ -180,6 +182,7 @@ function createTaskDom(eventName,project){
 function clearTaskMainBlock(eventName,targetedProject){
   while (taskMainDiv.firstChild) {
     taskMainDiv.removeChild(taskMainDiv.firstChild);
+    
 }
 PubSub.publish('taskMainDivCleared',targetedProject)  // after clearing taskmaindiv it will call publish a function which finds targeted project and add ul block to maintask dib
 
@@ -216,6 +219,19 @@ function letsChangeCheckbox(eventName,checkbox){
 
 }
 
+
+function updateTaskDetails(eventName,taskUpdateBtnCurrentId){
+  const task = document.querySelector(`#taskList${taskUpdateBtnCurrentId}`)
+  const namePara =task.querySelector('.namePara')
+  const detailPara = task.querySelector('.detailPara')
+  const datePara = document.querySelector('.dateBox')
+  namePara.textContent = taskNameInput.value
+  detailPara.textContent = taskDetailInput.value
+  datePara.textContent = taskDateInput.value
+    
+  }
+
+
 PubSub.subscribe("ToggleMenuClicked",toggle)
 PubSub.subscribe('clickAddProjectButton',openForm)
 PubSub.subscribe('addProject',addProject)
@@ -229,3 +245,6 @@ PubSub.subscribe('targetedListClicked',clearTaskMainBlock)
 PubSub.subscribe('taskObjCreated',createTaskDom)
 PubSub.subscribe('taskMainDivCleared',addTargetedProjectListToTaskMainDiv )
 PubSub.subscribe('checkBoxClicked',letsChangeCheckbox)
+PubSub.subscribe('openTaskForm',openTaskForm)
+PubSub.subscribe('taskUpdateClicked',updateTaskDetails)
+PubSub.subscribe('mainListClicked',clearTaskMainBlock)

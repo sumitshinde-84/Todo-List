@@ -6,10 +6,11 @@ export default function project(name,task,dataIndex,block){
     dataIndex;  
     name;
     task;
-    block:block;
+    block;
+    let taskcount = 0;
     
     return{
-        name,task,dataIndex,block
+        name,task,dataIndex,block,taskcount
     }
 
 }
