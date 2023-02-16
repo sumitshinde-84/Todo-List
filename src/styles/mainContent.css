@@ -108,11 +108,18 @@
         background-color: var(--accentDark);
         border-radius: 3px;
         border: none;
-        
     
     
      }
 
+     .detailPara{
+         
+      font-size: 11px;
+   }
+
+   .namePara{
+      font-size: 15px;
+   }
 
      .task-cancle-btn{
         padding: 3px 6px;
@@ -130,6 +137,13 @@
         gap: 0px 14px;
         margin-top: 10px;
      }
+     .task-main-div{
+      width: 95%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      
+     }
 
      .task-list{
         width: 95%;
@@ -140,13 +154,48 @@
         
      }
      .task-list-item{
+      
         width:95%;
         border: 1px solid var(--textColor);
         border-radius: 5px;
+        height: 50px;
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
+        position: relative;
 
      }
+
+     .threeDot{
+      width: 20px;
+      height: 20px;
+      margin-top: 3px;
+      background-image: url('../image/threeDot.png');
+      background-size: 20px;
+
+     }
+
+     .task-list-item div:nth-child(2){
+      position: absolute;
+      left:60px;
+      
+     }
+
+     .status{
+     margin-right: auto;
+     width: 16px;
+     height: 16px;
+     margin-top: 10px;
+     border: 2px solid var(--textColor);
+     border-radius: 50%;
+     background-image: url('../image/tick.png');
+     background-size: 15px;
+     background-repeat: no-repeat;
+     
+     }
+
+     
+
+     
 
      .task-list-item:hover{
         width:95%;
@@ -171,3 +220,6 @@
         font-size: 12px;
      }
      
+     .namePara{
+      font-family:monoBold;
+     }

@@ -14,7 +14,7 @@ function createProject(){
     block.id =`block${count}`
     const ProjectObj = project(projectInput.value,[],count,block) 
     Projects.push(ProjectObj)
-    projectForm.reset()
+    // projectForm.reset()
     count++;
 }
 

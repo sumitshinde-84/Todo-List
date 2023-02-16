@@ -41,9 +41,9 @@
                 </div>
                 <ul class="project-ul">
                    <form class="project-form">
-                    <input type="text">
+                    <input type="text" id="projectName">
                     
-                    <button class="add" type="reset">Add</button>
+                    <button class="add" >Add</button>
                     <button class="update">update</button>
                     <button class="cancle">Cancel</button>
                    </form>
@@ -105,10 +105,13 @@
     addProjectBtn.style.display='none'
     updateProjectBtn.style.display='block'
   PubSub.publish('openForm')
-  PubSub.publish('projectClicked')
+//   PubSub.publish('projectClicked')
 
+        }
 
-
+        function statusInputEventListnerFunction(event){
+            console.log('hurrray status inputevent')
+        PubSub.publish('checkBoxClicked',event.currentTarget)
         }
 
     </script>

@@ -4,12 +4,14 @@ import {
      projectTitle,projectRename,addProjectBtn,taskForm,taskNameInput
      ,taskDetailInput,taskDateInput,taskList, taskListSect,taskMainDiv
   } from "./domCollection";
+import { Projects } from './projectStructerer';
 import { task } from './task';
 
   
   let iconClick = 'false';
   let count =0;
   let taskCount =0;
+  let checkboxStatus = 'false'
 // -------------------------this function is used for toggle menu--------------------
 function toggle() {
   if (iconClick === 'false') {
@@ -120,7 +122,7 @@ function showProjectDetails(eventName,targetedElement){
 }
 
 
-//  --------------------------  function for open form Task form ---------------------------------
+//  --------------------------  function for open & closeform Task form ---------------------------------
  
 function openTaskForm(){
   taskForm.style.scale='1'
@@ -132,18 +134,29 @@ function closeTaskForm(){
   taskForm.style.height='0px'
 }
 
+//  --------------------------  function create Task list as dom element ---------------------------------
+
+
 function createTaskDom(eventName,project){
   const taskList = document.createElement('li')
+  const statusCheckbox = document.createElement('div')
+  statusCheckbox.className='status'
+  statusCheckbox.id=`task${taskCount}`
+  statusCheckbox.setAttribute('onClick','statusInputEventListnerFunction(event)')
+  const threeDot = document.createElement('div')
+  threeDot.className='threeDot'
   taskList.id = `taskList${taskCount}`
   taskList.className='task-list-item'
   taskList.id = taskCount
   const blockForNameAndDetails = document.createElement('div')
   const blockForDateAndRestThing = document.createElement('div')
   const namePara = document.createElement('p')
+  namePara.className='namePara'
   const dateBox = document.createElement('div')
   dateBox.className='dateBox'
   const datePara = document.createElement('p')
   const detailPara = document.createElement('p')
+  detailPara.className='detailPara'
   detailPara.textContent = taskDetailInput.value
   namePara.textContent = taskNameInput.value
   datePara.textContent = taskDateInput.value
@@ -151,18 +164,55 @@ function createTaskDom(eventName,project){
   blockForNameAndDetails.appendChild(detailPara)
   blockForDateAndRestThing.appendChild(dateBox)
   dateBox.appendChild(datePara)
+  taskList.appendChild(statusCheckbox)
   taskList.appendChild(blockForNameAndDetails)
   taskList.appendChild(blockForDateAndRestThing)
+  taskList.appendChild(threeDot);
   project.block.appendChild(taskList)
-  
   taskMainDiv.appendChild(project.block)
 
 }
 
-function clearTaskMainBlock(){
+
+//  --------------------------  function to clear mainTaskDiv when user click on project ---------------------------------
+
+
+function clearTaskMainBlock(eventName,targetedProject){
   while (taskMainDiv.firstChild) {
     taskMainDiv.removeChild(taskMainDiv.firstChild);
 }
+PubSub.publish('taskMainDivCleared',targetedProject)  // after clearing taskmaindiv it will call publish a function which finds targeted project and add ul block to maintask dib
+
+}
+
+
+//  --------------------------  function which finds targeted project and append block to taskmainidiv ---------------------------------
+
+function addTargetedProjectListToTaskMainDiv(eventName,targetedProject){
+
+  for (const project of Projects) {
+    if(project.dataIndex == targetedProject.id[targetedProject.id.length - 1]){
+      taskMainDiv.appendChild(project.block)
+    }
+    
+  }
+
+}
+
+function letsChangeCheckbox(eventName,checkbox){
+  if(checkboxStatus=='false'){
+    checkbox.style.backgroundColor='#2abd67'
+    checkboxStatus='true'
+    checkbox.style.border='#2abd67'
+    checkbox.nextSibling.firstChild.style='font-family: strikeout;'
+  }else{
+    checkbox.style.backgroundColor='#fefcfe'
+    checkbox.style.border='2px solid #374958'
+    checkboxStatus='false'
+    checkbox.nextSibling.firstChild.style='font-family:monoBold'
+    
+  }
+  
 
 }
 
@@ -173,11 +223,9 @@ PubSub.subscribe('closeForm',closeForm)
 PubSub.subscribe('openForm',openForm)
 PubSub.subscribe('projectUpdateBtnClicked',updateProjectName)
 PubSub.subscribe('targetedListClicked',showProjectDetails);
-// PubSub.subscribe('targetedListClicked',showTaskDetails)
 PubSub.subscribe('addTaskButtonClicked',openTaskForm)
 PubSub.subscribe('taskCancleButtonClicked',closeTaskForm)
-// PubSub.subscribe('taskAddButtonClicked',createTask)
-
 PubSub.subscribe('targetedListClicked',clearTaskMainBlock)
 PubSub.subscribe('taskObjCreated',createTaskDom)
-
+PubSub.subscribe('taskMainDivCleared',addTargetedProjectListToTaskMainDiv )
+PubSub.subscribe('checkBoxClicked',letsChangeCheckbox)
