@@ -8,7 +8,7 @@
 
 .mainMenu{
     border-bottom: 2px var(--textColor) solid;
-    width: 230px;
+    width: 200px;
     margin-left: 20px;
     margin-top: 30px;
 }
@@ -35,7 +35,7 @@ ul{
 }
 
 ul li{
-    padding: 5px 30px;
+    padding: 3px 30px;
     display: flex;
     gap: 4px;
     
@@ -55,7 +55,7 @@ ul li:hover{
 
 .Project-list{
     border-bottom: 2px var(--textColor) solid;
-    width: 230px;
+    width: 200px;
     margin-left: 20px;
     margin-top: 30px;
    
@@ -109,7 +109,7 @@ select:focus{
     position: relative; 
     list-style: none;
     color: var(--textColor);
-    padding: 5px 50px;
+    padding: 3px 50px;
 
 }
 
@@ -118,7 +118,7 @@ select:focus{
     position: relative; 
     list-style: none;
     color: var(--textColor);
-    padding: 5px 50px;
+    padding: 3px 50px;
     background-color: var(--mainContent);
 }
 
@@ -164,7 +164,7 @@ select:focus{
 .project-form input {
     font-family: 'Alata', sans-serif;
    height: 27px;
-   width: 100%;
+   width: 87%;
    border-color: var(--textColor);
    border-radius: 3px;
    padding-left: 2px;
@@ -180,7 +180,7 @@ select:focus{
     background-color: var(--accentDark);
     border-radius: 3px;
     border: none;
-    margin-right: auto;
+   
 
 
 }
@@ -192,7 +192,7 @@ select:focus{
     background-color: var(--accentDark);
     border-radius: 3px;
     border: none;
-    margin-right: auto;
+    
     display: none;
 
 
@@ -205,6 +205,7 @@ select:focus{
     border-radius: 3px;
     border: none;
     margin-left: auto;
+    margin-right: 27px;
 
 }
 
