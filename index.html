@@ -28,7 +28,7 @@
                 <h2>Home</h2>
         </div>
                 <ul id="main-list">
-                    <li class="allTask"> <img src="./images/inbox.png" alt="" ondblclick="disabled"> All Task</li>
+                    <li class="allTask"> <img src="./images/inbox.png" alt="" > All Task</li>
                     <li> <img src="./images/today.png" alt=""> Today</li>
                     <li> <img src="./images/week.png" alt=""> Next 7 Days</li>
                     <li> <img src="./images/star.png" alt=""> Important</li>
@@ -111,7 +111,7 @@
         }
 
         function statusInputEventListnerFunction(event){
-            console.log('hurrray status inputevent')
+           
         PubSub.publish('checkBoxClicked',event.currentTarget)
         }
 
