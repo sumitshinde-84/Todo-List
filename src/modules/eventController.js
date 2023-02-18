@@ -90,12 +90,8 @@ taskUpdateBtn.addEventListener('click',(event)=>{
 )
 
 
-allTask.addEventListener('click',()=>{
-  
-  PubSub.publish('mainListClicked')
-  const allTaskUl = document.createElement('ul')
-  taskMainDiv.appendChild(allTaskUl)
-})
+
+
 
 
 
@@ -104,6 +100,4 @@ allTask.addEventListener('click',()=>{
 
 
  
-
-
 

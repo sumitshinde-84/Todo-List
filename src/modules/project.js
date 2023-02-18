@@ -1,6 +1,3 @@
-// import { AsyncDependenciesBlock } from "webpack";
-
-
 export default function project(name,task,dataIndex,block){
      
     dataIndex;  

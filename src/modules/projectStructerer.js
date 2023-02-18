@@ -1,4 +1,3 @@
-
 import PubSub from "pubsub-js";
 import project from './project'
 import {projectInput,projectForm,projectRename, taskNameInput,taskDetailInput,taskDateInput, taskAddbutton} from "./domCollection"; 
@@ -45,7 +44,7 @@ PubSub.publish('closeForm')
 
 function createTask(){
  
-    const taskObj = task(taskNameInput.value,taskDateInput.value,taskDetailInput.value,taskCount)
+    const taskObj = task(taskNameInput.value,taskDateInput.value,taskDetailInput.value,'false',taskCount)
     console.log(taskNameInput.value,'this is taskname input')
     let targetedId = taskAddbutton.id
     for (const task of Projects){
@@ -64,4 +63,3 @@ PubSub.subscribe('projectSelected',showProjectDetail)
 PubSub.subscribe('addProject',createProject)
 PubSub.subscribe('projectTextcontentHasBeenRenamed',letsRenameProjectNameProperty)
 PubSub.subscribe('taskAddButtonClicked',createTask)
-

@@ -2,7 +2,7 @@ import PubSub, { publish } from 'pubsub-js';
 import {
      mainContent, sideBar,projectInput,projectForm,projectUl,
      projectTitle,projectRename,addProjectBtn,taskForm,taskNameInput
-     ,taskDetailInput,taskDateInput,taskList, taskListSect,taskMainDiv
+     ,taskDetailInput,taskDateInput,taskList, taskListSect,taskMainDiv, addTaskButton, taskAddbutton, taskUpdateBtn
   } from "./domCollection";
 import { Projects } from './projectStructerer';
 import { task } from './task';
@@ -203,20 +203,35 @@ function addTargetedProjectListToTaskMainDiv(eventName,targetedProject){
 }
 
 function letsChangeCheckbox(eventName,checkbox){
-  if(checkboxStatus=='false'){
-    checkbox.style.backgroundColor='#2abd67'
-    checkboxStatus='true'
-    checkbox.style.border='#2abd67'
-    checkbox.nextSibling.firstChild.style='font-family: strikeout;'
-  }else{
-    checkbox.style.backgroundColor='#fefcfe'
-    checkbox.style.border='2px solid #374958'
-    checkboxStatus='false'
-    checkbox.nextSibling.firstChild.style='font-family:monoBold'
-    
-  }
-  
+   let targetedProject = taskAddbutton.id;
+   let targetedCheckBoxId = checkbox.id[checkbox.id.length - 1]
 
+   console.log(targetedProject)
+
+   for(let i =0;i<Projects[targetedProject].task.length;i++){
+      if(Projects[targetedProject].task[i].dataIndex == targetedCheckBoxId){
+        console.log(Projects[targetedProject])
+     let  targetedTask = Projects[targetedProject].task[i]
+     
+     if(targetedTask.status=='false'){
+      checkbox.style.backgroundColor='#2abd67'
+      targetedTask.status='true'
+      checkbox.style.border='#2abd67'
+      checkbox.nextSibling.firstChild.style='font-family: strikeout;'
+    }else{
+      checkbox.style.backgroundColor='#fefcfe'
+      checkbox.style.border='2px solid #374958'
+      targetedTask.status='false'
+      checkbox.nextSibling.firstChild.style='font-family:monoBold'
+      
+    }
+      }
+    
+   }
+
+  
+   
+  
 }
 
 
@@ -228,6 +243,8 @@ function updateTaskDetails(eventName,taskUpdateBtnCurrentId){
   namePara.textContent = taskNameInput.value
   detailPara.textContent = taskDetailInput.value
   datePara.textContent = taskDateInput.value
+  taskUpdateBtn.style.display='none'
+  taskAddbutton.style.display='block'
     
   }
 

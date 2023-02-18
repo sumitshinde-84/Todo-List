@@ -151,14 +151,26 @@
     flex-direction: column;
     align-items: center;
     margin-right: 100px;
+    height: auto;
       
+     }
+
+     .task-Main-Div2{
+      width: 87%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-right: 100px;
+      height: auto;
+      position:  relative;
+      top: 200px;
      }
 
      .task-list{
       width: 100%;
       /* border: 1px solid var(--textColor); */
       border-radius: 5px;
-      height: 45px;
+      height: auto;
       display: flex;
       justify-content: center;
       position: relative;
