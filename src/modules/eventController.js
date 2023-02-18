@@ -86,6 +86,7 @@ taskUpdateBtn.addEventListener('click',(event)=>{
   console.log(event.target)
   let taskButtonId = event.target.id
   PubSub.publish('taskUpdateClicked',taskButtonId)
+  
 }
 )
 

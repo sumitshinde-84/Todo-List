@@ -9,7 +9,7 @@ import { task } from './task';
 
   
   let iconClick = 'false';
-  let count =0;
+  let count =1;
  
   let checkboxStatus = 'false'
 // -------------------------this function is used for toggle menu--------------------
@@ -132,6 +132,8 @@ function openTaskForm(){
 function closeTaskForm(){
   taskForm.style.scale='0'
   taskForm.style.height='0px'
+  taskUpdateBtn.style.display='none'
+  taskAddbutton.style.display='block'
 }
 
 //  --------------------------  function create Task list as dom element ---------------------------------
@@ -199,6 +201,7 @@ function addTargetedProjectListToTaskMainDiv(eventName,targetedProject){
     }
     
   }
+  taskForm.reset()
 
 }
 
@@ -245,6 +248,7 @@ function updateTaskDetails(eventName,taskUpdateBtnCurrentId){
   datePara.textContent = taskDateInput.value
   taskUpdateBtn.style.display='none'
   taskAddbutton.style.display='block'
+  PubSub.publish('taskDetailUpdateDone',taskUpdateBtnCurrentId)
     
   }
 

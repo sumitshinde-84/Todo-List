@@ -4,7 +4,7 @@ export default function project(name,task,dataIndex,block){
     name;
     task;
     block;
-    let taskcount = 0;
+    let taskcount =0
     
     return{
         name,task,dataIndex,block,taskcount
