@@ -1,137 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TodoList</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="main">
-
       <!-- sidebar section -->
 
-        <div class="header">
-            <div id="menuIcon">
-              <img src="./images/menu.png" alt="" class="menuImg"> 
-            </div>
-            <div class="logo">
-                <img src="./images/check.png"  alt="" class="checkImg">
-                <h1><span class="what">What</span>ToDo</h1>
-            </div>
+      <div class="header">
+        <div id="menuIcon">
+          <img src="./images/menu.png" alt="" class="menuImg" />
         </div>
-        <!-- //sidebar section -->
-
-        <div class="sidebar">
-
-            <div class="mainMenu">
-                <h2>Home</h2>
+        <div class="logo">
+          <img src="./images/check.png" alt="" class="checkImg" />
+          <h1>
+            <span class="what">What</span>ToDo
+          </h1>
         </div>
-                <ul id="main-list">
-                    <li class="allTask"> <img src="./images/inbox.png" alt="" > All Task</li>
-                    <li> <img src="./images/today.png" alt=""> Today</li>
-                    <li> <img src="./images/week.png" alt=""> Next 7 Days</li>
-                    <li> <img src="./images/star.png" alt=""> Important</li>
-           
-                </ul>
-                
-                <div class="Project-list">
-                    <h2>Project</h2>
+      </div>
+      <!-- //sidebar section -->
 
-                </div>
-                <ul class="project-ul">
-                   <form class="project-form">
-                    <input type="text" id="projectName">
-                    
-                    <button class="add" >Add</button>
-                    <button class="update">update</button>
-                    <button class="cancle">Cancel</button>
-                   </form>
-                 <li ondblclick="ProjectEventlistner(event)" class="list" id="list0"><p class="para" id="p0">Default</p> <select id="0" value="none">
-<option style="background-color;border-radius:2px;position:relative;bottom:20px;outline:none;" class="project-rename" value="rename">Rename</option>
-<option style="display:none;" value="nothing" selected="">Rename</option>
-<option style="background-color;border-radius:2px;position:relative;bottom:20px;outline:none;" class="project-delete" value="delete">Delete</option></select></li>
-               </ul>
-                <div class="add-Project">
-                    <li><div class="plus"><p>+</p></div>Add Project</li>
-                </div>
-                
+      <div class="sidebar">
+        <div class="mainMenu">
+          <h2>Home</h2>
         </div>
-        <div class="mainContent">
-            <div class="Project-Title">
-                <h2>Welcome !</h2>
+        <ul id="main-list">
+          <li class="allTask">
+            <img src="./images/inbox.png" alt="" />
+            All Task
+          </li>
+          <li class="today">
+            <img src="./images/today.png" alt="" />
+            Today
+          </li>
+          <li class="next7days">
+            <img src="./images/week.png" alt="" />
+            Next 7 Days
+          </li>
+          <li>
+            <img src="./images/star.png" alt="" />
+            Important
+          </li>
+        </ul>
 
-            </div>
-           <div class="task-main-div">
-
-            
-           </div>
-           
-   
-                <form class="task-form" action="">
-                    <p class='input-Para'>
-                        <label for="name">Name</label>
-                        <input type="text" name="name" placeholder="What to do ?" id="name-input">
-                    </p>
-                    <p class='input-Para'>
-                        <label for="note">Details(Optional)</label>
-                        <input type="text" name="note" placeholder="eg: i'm just gonna procastinate, aren't it ?" id="details-input">
-                    </p>
-                    <p class='input-Para'>
-                        <label for="Date">Date</label>
-                        <input type="date" name="Date" id="date-input">
-                    </p>
-                   
-                    <p class="button-para">
-                        <button   class="task-add-btn" >Add</button>
-                        <button  class="task-update-btn">Update</button>
-                        <button class="task-cancle-btn" >Cancle</button>
-                    </p>
-                </form>
-
-          
-           
-            <button class="addTaskButton">Add Task</button>
+        <div class="Project-list">
+          <h2>Project</h2>
         </div>
-        <div class="footer"></div>
+        <ul class="project-ul">
+          <form class="project-form">
+            <input type="text" id="projectName" />
 
+            <button class="add">Add</button>
+            <button class="update">update</button>
+            <button class="cancle">Cancel</button>
+          </form>
+          <li ondblclick="ProjectEventlistner(event)" class="list" id="list0">
+            <p class="para" id="p0">Default</p>
+            <select id="0" value="none">
+              <option
+                style="background-color;border-radius:2px;position:relative;bottom:20px;outline:none;"
+                class="project-rename"
+                value="rename"
+              >
+                Rename
+              </option>
+              <option style="display: none" value="nothing" selected="">
+                Rename
+              </option>
+              <option
+                style="background-color;border-radius:2px;position:relative;bottom:20px;outline:none;"
+                class="project-delete"
+                value="delete"
+              >
+                Delete
+              </option>
+            </select>
+          </li>
+        </ul>
+        <div class="add-Project">
+          <li>
+            <div class="plus"><p>+</p></div>
+            Add Project
+          </li>
+        </div>
+      </div>
+      <div class="mainContent">
+        <div class="Project-Title">
+          <h2>Welcome !</h2>
+        </div>
+        <div class="task-main-div"></div>
+
+        <form class="task-form" action="">
+          <p class="input-Para">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              name="name"
+              placeholder="What to do ?"
+              id="name-input"
+            />
+          </p>
+          <p class="input-Para">
+            <label for="note">Details(Optional)</label>
+            <input
+              type="text"
+              name="note"
+              placeholder="eg: i'm just gonna procastinate, aren't it ?"
+              id="details-input"
+            />
+          </p>
+          <p class="input-Para">
+            <label for="Date">Date</label>
+            <input type="date" name="Date" id="date-input" />
+          </p>
+
+          <p class="button-para">
+            <button class="task-add-btn">Add</button>
+            <button class="task-update-btn">Update</button>
+            <button class="task-cancle-btn">Cancle</button>
+          </p>
+        </form>
+
+        <button class="addTaskButton">Add Task</button>
+      </div>
+      <div class="footer"></div>
     </div>
 
-
-    <script  src="./main.js"></script>
+    <script src="./main.js"></script>
     <script>
-        
-        function ProjectEventlistner(event){
+      function ProjectEventlistner(event) {
+        const updateProjectBtn = document.querySelector('.update');
 
-    const updateProjectBtn = document.querySelector('.update')
-     
-     updateProjectBtn.id = event.currentTarget.id[event.currentTarget.id.length - 1]
-    const addProjectBtn = document.querySelector('.add')
-    addProjectBtn.style.display='none'
-    updateProjectBtn.style.display='block'
-  PubSub.publish('openForm')
-//   PubSub.publish('projectClicked')
+        updateProjectBtn.id =
+          event.currentTarget.id[event.currentTarget.id.length - 1];
+        const addProjectBtn = document.querySelector('.add');
+        addProjectBtn.style.display = 'none';
+        updateProjectBtn.style.display = 'block';
+        PubSub.publish('openForm');
+        //   PubSub.publish('projectClicked')
+      }
 
-        }
+      function statusInputEventListnerFunction(event) {
+        PubSub.publish('checkBoxClicked', event.currentTarget);
+      }
 
-        function statusInputEventListnerFunction(event){
-           
-        PubSub.publish('checkBoxClicked',event.currentTarget)
-        }
-
-        function taskListEventListnerFunction(event){
-            console.log(event.target)
-            PubSub.publish('openTaskForm')
-            const taskUpdateBtn = document.querySelector('.task-update-btn')
-            const taskAddbutton = document.querySelector('.task-add-btn')
-            taskAddbutton.style.display='none'
-            taskUpdateBtn.style.display='block'
-            console.log(event.target.id[event.target.id.length - 1],'thsi is targeted list')
-            taskUpdateBtn.id=event.target.id[event.target.id.length - 1]
-            
-            
-        }
-
+      function taskListEventListnerFunction(event) {
+        console.log(event.target);
+        PubSub.publish('openTaskForm');
+        const taskUpdateBtn = document.querySelector('.task-update-btn');
+        const taskAddbutton = document.querySelector('.task-add-btn');
+        taskAddbutton.style.display = 'none';
+        taskUpdateBtn.style.display = 'block';
+        console.log(
+          event.target.id[event.target.id.length - 1],
+          'thsi is targeted list'
+        );
+        taskUpdateBtn.id = event.target.id[event.target.id.length - 1];
+      }
     </script>
-</body>
+  </body>
 </html>
