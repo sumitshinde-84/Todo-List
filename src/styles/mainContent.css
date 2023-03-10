@@ -1,249 +1,249 @@
-.mainContent{
-    grid-column: 2/3;
-    grid-row: 2/3;
-    background-color:var(--mainContent);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 30px;
-    
+.mainContent {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  background-color: var(--mainContent);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+}
 
-    
-    }
+.Project-Title {
+  width: 80%;
+  background-color: var(--accentDark);
+  border-radius: 5px;
+  height: 70px;
+  align-self: center;
+  margin-right: 240px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  padding-left: 60px;
+  color: white;
+}
 
+.addTaskButton {
+  padding: 8px 14px;
+  margin-right: auto;
+  margin-top: 20px;
+  border-radius: 5px;
+  font-size: 13px;
+  border-color: var(--sidebar);
+  box-shadow: 2px 2px 2px var(--accentDark);
+}
 
-.Project-Title{
-   width: 80%;
-   background-color: var(--accentDark);
-   border-radius: 5px;
-   height: 70px;
-   align-self: center;
-   margin-right: 240px;
-   text-align: center;
-   display: flex;
-   align-items: center;
-   padding-left: 60px;
-   color: white;
-    
-    }
+.task-form {
+  width: 80%;
+  height: 0px;
+  scale: 0;
+  align-self: center;
+  margin-right: 240px;
+  margin-top: 20px;
+  border-radius: 5px;
+  background-color: var(--sidebar);
+  padding: 20px 0px;
+  color: var(--textColor);
+  font-family: 'Alata', sans-serif;
+}
 
+.input-Para {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2px;
+  gap: 2px 0px;
+}
 
-    .addTaskButton{
-       padding: 8px 14px;
-       margin-right: auto;
-       margin-top: 20px;
-       border-radius: 5px;
-       font-size: 13px;
-       border-color: var(--sidebar);
-       box-shadow: 2px 2px 2px var(--accentDark);
-    }
+label {
+  width: 95%;
+  font-size: 16px;
+}
+#name-input {
+  width: 95%;
+  height: 30px;
+  outline: 2px solid black;
+  padding: 2px;
+  border: none;
+  border-radius: 2px;
+}
 
-    .task-form {
-      width: 80%;
-      height: 0px;
-      scale: 0;
-      align-self: center;
-      margin-right: 240px;
-      margin-top: 20px;
-      border-radius: 5px;
-      background-color: var(--sidebar);
-      padding: 20px 0px;
-      color: var(--textColor);
-      font-family: 'Alata', sans-serif;
-       
-    }
+#details-input {
+  width: 95%;
+  height: 50px;
+  outline: 2px solid black;
+  padding: 2px;
+  border: none;
+  border-radius: 2px;
+}
 
-    .input-Para{
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 2px;
-        gap: 2px 0px;
-       
-        
-    }
+#date-input {
+  width: 95%;
+  height: 30px;
+  outline: 2px solid black;
+  padding: 2px;
+  border: none;
+  border-radius: 2px;
+}
 
-    label{
-        width: 95%;
-        font-size: 16px;
-    
-    }
-    #name-input{
-        width: 95%;
-        height: 30px;
-        outline: 2px solid black;
-        padding: 2px;
-        border: none;
-        border-radius: 2px;
-        
-       
-    }
+.task-add-btn {
+  padding: 3px 6px;
+  width: 70px;
+  color: white;
+  background-color: var(--accentDark);
+  border-radius: 3px;
+  border: none;
+}
 
-    #details-input{
-        width: 95%;
-        height: 50px;
-        outline: 2px solid black;
-        padding: 2px;
-        border: none;
-        border-radius: 2px;
-    }
+.task-update-btn {
+  padding: 3px 6px;
+  width: 70px;
+  color: white;
+  background-color: var(--accentDark);
+  border-radius: 3px;
+  border: none;
+  display: none;
+}
 
-    #date-input{
-        width: 95%;
-        height: 30px;
-        outline: 2px solid black;
-        padding: 2px;
-        border: none;
-        border-radius: 2px;
-    }
+.detailPara {
+  font-size: 11px;
+}
 
+.namePara {
+  font-size: 15px;
+}
 
-     .task-add-btn{
-        padding: 3px 6px;
-        width: 70px;
-        color: white;
-        background-color: var(--accentDark);
-        border-radius: 3px;
-        border: none;
-    
-    
-     }
+.task-cancle-btn {
+  padding: 3px 6px;
+  width: 70px;
+  color: white;
+  background-color: red;
+  border-radius: 3px;
+  border: none;
+}
 
-     .task-update-btn{
-      padding: 3px 6px;
-      width: 70px;
-      color: white;
-      background-color: var(--accentDark);
-      border-radius: 3px;
-      border: none;
-      display: none;
-     }
+.button-para {
+  display: flex;
+  justify-content: center;
+  gap: 0px 14px;
+  margin-top: 10px;
+}
+.task-main-div {
+  width: 87%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 100px;
+  height: auto;
+}
 
-     .detailPara{
-         
-      font-size: 11px;
-   }
+.task-Main-Div2 {
+  width: 87%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 100px;
+  height: auto;
+  position: relative;
+  top: 200px;
+}
 
-   .namePara{
-      font-size: 15px;
-   }
+.task-list {
+  width: 100%;
+  /* border: 1px solid var(--textColor); */
+  border-radius: 5px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  left: -20px;
+  margin-bottom: -12px;
+}
+.task-list-item {
+  width: 92%;
+  border: 1px solid var(--textColor);
+  border-radius: 5px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+}
 
-     .task-cancle-btn{
-        padding: 3px 6px;
-        width: 70px;
-        color: white;
-        background-color: red;
-        border-radius: 3px;
-        border: none;
-       
-     }
+.threeDot {
+  width: 20px;
+  height: 20px;
+  margin-top: 3px;
+  background-image: url('../image/threeDot.png');
+  background-size: 20px;
+}
 
-     .button-para{
-        display: flex;
-        justify-content: center;
-        gap: 0px 14px;
-        margin-top: 10px;
-     }
-     .task-main-div{
-      width: 87%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-right: 100px;
-    height: auto;
-      
-     }
+.task-list-item div:nth-child(2) {
+  position: absolute;
+  left: 60px;
+}
 
-     .task-Main-Div2{
-      width: 87%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-right: 100px;
-      height: auto;
-      position:  relative;
-      top: 200px;
-     }
+.status {
+  margin-right: auto;
+  width: 16px;
+  height: 16px;
+  margin-top: 10px;
+  border: 2px solid var(--textColor);
+  border-radius: 50%;
+  background-image: url('../image/tick.png');
+  background-size: 15px;
+  background-repeat: no-repeat;
+}
 
-     .task-list{
-      width: 100%;
-      /* border: 1px solid var(--textColor); */
-      border-radius: 5px;
-      height: auto;
-      display: flex;
-      justify-content: center;
-      position: relative;
-      left: -20px;
-     }
-     .task-list-item{
-      
-        width:92%;
-        border: 1px solid var(--textColor);
-        border-radius: 5px;
-        height: 45px;
-        display: flex;
-        justify-content: center;
-        
+.task-list-item:hover {
+  width: 92%;
+  border: 1px solid var(--textColor);
+  border-radius: 5px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  background-color: var(--sidebar);
+}
 
-     }
+.dateBox {
+  width: 90px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  border: 1px solid var(--textColor);
+  font-size: 12px;
+}
 
-     .threeDot{
-      width: 20px;
-      height: 20px;
-      margin-top: 3px;
-      background-image: url('../image/threeDot.png');
-      background-size: 20px;
+.namePara {
+  font-family: monoBold;
+}
 
-     }
+input[type='date']::-webkit-datetime-edit,
+input[type='date']::-webkit-inner-spin-button,
+input[type='date']::-webkit-clear-button {
+  color: #fff;
+  position: relative;
+}
 
-     .task-list-item div:nth-child(2){
-      position: absolute;
-      left:60px;
-      
-     }
+input[type='date']::-webkit-datetime-edit-year-field {
+  position: absolute !important;
+  border-left: 1px solid #8c8c8c;
+  padding: 2px;
+  color: #000;
+  left: 56px;
+}
 
-     .status{
-     margin-right: auto;
-     width: 16px;
-     height: 16px;
-     margin-top: 10px;
-     border: 2px solid var(--textColor);
-     border-radius: 50%;
-     background-image: url('../image/tick.png');
-     background-size: 15px;
-     background-repeat: no-repeat;
-     
-     }
+input[type='date']::-webkit-datetime-edit-month-field {
+  position: absolute !important;
+  border-left: 1px solid #8c8c8c;
+  padding: 2px;
+  color: #000;
+  left: 26px;
+}
 
-     
-
-     
-
-     .task-list-item:hover{
-      width:92%;
-        border: 1px solid var(--textColor);
-        border-radius: 5px;
-        height: 45px;
-        display: flex;
-        justify-content: center;
-        background-color: var(--sidebar);
-
-     }
-
-
-
-     .dateBox{
-        width:90px;
-        height: 24px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 5px;
-        border: 1px solid var(--textColor);
-        font-size: 12px;
-     }
-     
-     .namePara{
-      font-family:monoBold;
-     }
+input[type='date']::-webkit-datetime-edit-day-field {
+  position: absolute !important;
+  color: #000;
+  padding: 2px;
+  left: 4px;
+}

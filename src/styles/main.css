@@ -1,43 +1,29 @@
 @font-face {
-    font-family: strikeout;
-    src: url('../font/JMH Typewriter mono Family/JMH Typewriter mono Bold Over.ttf');
+  font-family: strikeout;
+  src: url('../font/JMH Typewriter mono Family/JMH Typewriter mono Bold Over.ttf');
 }
 @font-face {
-    font-family: monoBold;
-    src: url('../font/JMH Typewriter mono Family/JMH Typewriter mono Bold.ttf');
+  font-family: monoBold;
+  src: url('../font/JMH Typewriter mono Family/JMH Typewriter mono Bold.ttf');
 }
 
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-body{
-    width: 100vw;
-    height: 100vh;
+body {
+  width: 100vw;
+  height: 100vh;
 }
 
-.main{
-    width: 100vw;
-    height: 100vh;
-    display: grid;
-    grid-template-columns:250px 1200px;
-    grid-template-rows: 60px 100% 50px;
-    overflow-x: hidden;
-    font-family: 'Alata', sans-serif;
+.main {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 250px 1200px;
+  grid-template-rows: 60px 100% 50px;
+  overflow-x: hidden;
+  font-family: 'Alata', sans-serif;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
