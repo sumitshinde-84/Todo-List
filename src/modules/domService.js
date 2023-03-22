@@ -22,20 +22,25 @@ import {
 } from './domCollection';
 import { Projects } from './projectStructerer';
 import { task } from './task';
-import { addDays, format, add, differenceInDays, parse,isToday } from 'date-fns';
+import {
+  addDays,
+  format,
+  add,
+  differenceInDays,
+  parse,
+  isToday,
+} from 'date-fns';
 import project from './project';
 
-let iconClick = 'false';
 let count = 1;
 export const block = document.createElement('ul');
 block.className = 'task-list';
 const next7DaysUl = document.createElement('ul');
 next7DaysUl.className = 'task-list';
 
-let checkboxStatus = 'false';
 // -------------------------this function is used for toggle menu--------------------
 function toggle() {
-  if (iconClick === 'false') {
+  if (iconClick === 'false' || iconClick === undefined) {
     mainContent.style.gridColumn = '1/3';
     sideBar.style.gridColumn = '';
     sideBar.style.transform = 'translate(-110%,0%)';
@@ -236,7 +241,7 @@ function letsChangeCheckbox(eventName, checkbox) {
 }
 
 function next7DaysClicked() {
-PubSub.publish('letsClearMainTaskMainList')
+  PubSub.publish('letsClearMainTaskMainList');
   let targetedTask;
 
   for (let i = 0; i < Projects.length; i++) {
@@ -250,13 +255,13 @@ PubSub.publish('letsClearMainTaskMainList')
       console.log(dateValue);
       let today = new Date();
       let result = parse(dateValue, 'dd/MM/yyyy', today);
-      
+
       let diffrence = differenceInDays(result, today);
-      let isTodayResult = isToday(result)
-      console.log(result)
-      if (isTodayResult==true){
-        return
-      }else if(diffrence < 8 ){
+      let isTodayResult = isToday(result);
+      console.log(result);
+      if (isTodayResult == true) {
+        return;
+      } else if (diffrence < 8) {
         let targetedId = Projects[i].task[j].dataIndex;
         targetedTask = Projects[i].block.querySelector(
           `#taskList${targetedId}`
@@ -269,11 +274,10 @@ PubSub.publish('letsClearMainTaskMainList')
   }
 }
 
-
 function updateTaskDetails(eventName, taskUpdateBtnCurrentId) {
-  const task = document.querySelector(`#taskList${taskUpdateBtnCurrentId}`);
-  const namePara = task.querySelector('.namePara');
-  const detailPara = task.querySelector('.detailPara');
+  const Task = document.querySelector(`#taskList${taskUpdateBtnCurrentId}`);
+  const namePara = Task.querySelector('.namePara');
+  const detailPara = Task.querySelector('.detailPara');
   const datePara = document.querySelector('.dateBox');
   namePara.textContent = taskNameInput.value;
   detailPara.textContent = taskDetailInput.value;
@@ -311,8 +315,7 @@ function letsShowAddTaskButton() {
 }
 
 function todayHasBeenClicked() {
- 
-PubSub.publish('letsClearMainTaskMainList')
+  PubSub.publish('letsClearMainTaskMainList');
 
   let targetedTask;
   for (let i = 0; i < Projects.length; i++) {
@@ -321,14 +324,14 @@ PubSub.publish('letsClearMainTaskMainList')
       item.style.display = 'none';
     });
     for (let j = 0; j < Projects[i].task.length; j++) {
-      let today = new Date()
+      let today = new Date();
       const date = Projects[i].task[j].Date;
       const dateValue = date.split('-').reverse().join('/');
       let result = parse(dateValue, 'dd/MM/yyyy', today);
-     
-      let isTodayResult = isToday(result)
-      console.log(result)
-      if (isTodayResult==true) {
+
+      let isTodayResult = isToday(result);
+      console.log(result);
+      if (isTodayResult == true) {
         let targetedId = Projects[i].task[j].dataIndex;
         targetedTask = Projects[i].block.querySelector(
           `#taskList${targetedId}`
@@ -341,13 +344,17 @@ PubSub.publish('letsClearMainTaskMainList')
   }
 }
 
-
-function resetDisplay(){
+function resetDisplay() {
   for (let i = 0; i < Projects.length; i++) {
     let projectBlock = Projects[i].block.childNodes;
     projectBlock.forEach((item) => {
       item.style.display = 'flex';
-    });}
+    });
+  }
+}
+
+function storeVar(eventName, ProjectCount) {
+  localStorage.setItem('count', ProjectCount);
 }
 
 PubSub.subscribe('ToggleMenuClicked', toggle);
@@ -372,4 +379,4 @@ PubSub.subscribe('letsShowAddTaskButton', letsShowAddTaskButton);
 PubSub.subscribe('todayHasBeenClicked', todayHasBeenClicked);
 PubSub.subscribe('MainMenuClicked', letsClearMainTaskList);
 PubSub.subscribe('next7DaysClicked', next7DaysClicked);
-PubSub.subscribe('MenuClicked',resetDisplay)
+PubSub.subscribe('MenuClicked', resetDisplay);

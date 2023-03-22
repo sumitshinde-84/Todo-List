@@ -13,9 +13,11 @@ import {
 import { task } from './task';
 
 let taskCount;
+localStorage.setItem('count', 1);
 const defaultProject = document.createElement('ul');
 defaultProject.className = 'task-list';
 defaultProject.id = `block${0}`;
+
 export const Projects = [
   {
     name: 'Default',
@@ -25,9 +27,9 @@ export const Projects = [
     taskcount: 0,
   },
 ];
-let count = 1;
 
 function createProject() {
+  let count = JSON.parse(localStorage.getItem('count'));
   taskCount = 0;
   const block = document.createElement('ul');
   block.className = 'task-list';
@@ -65,7 +67,7 @@ function createTask() {
   if (!taskCount) {
     taskCount = 0;
   }
-
+  console.log('this is task count', taskCount);
   const taskObj = task(
     taskNameInput.value,
     taskDateInput.value,
@@ -73,6 +75,7 @@ function createTask() {
     'false',
     taskCount
   );
+  console.log('This is taskCount', taskCount);
   console.log(taskNameInput.value, 'this is taskname input');
   let targetedId = taskAddbutton.id;
   for (const task of Projects) {
@@ -84,6 +87,7 @@ function createTask() {
   }
 
   taskCount++;
+  console.log(Projects);
 }
 
 function updateTaskDetails(eventName, updateBtnCurrentId) {
