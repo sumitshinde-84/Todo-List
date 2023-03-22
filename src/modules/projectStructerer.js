@@ -22,7 +22,7 @@ defaultProject.id = `block${0}`;
 export let Projects ;
  if(document.cookie.indexOf("visited=true") === 1){
   Projects = JSON.parse(localStorage.getItem('ProjectListArray'))
-  console.log('YUPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP')
+  console.log('++++++++++++++++++++++++++++++++++++++')
 }else if(document.cookie.indexOf("visited=true") === -1){
   Projects = [
      {
