@@ -20,19 +20,22 @@ defaultProject.id = `block${0}`;
 
 
 export let Projects ;
-if(localStorage.getItem('ProjectListArray') == undefined){
- Projects = [
-    {
-      name: 'Default',
-      task: [],
-      dataIndex: 0,
-      block: defaultProject,
-      taskcount: 0,
-    },
-  ];
-}else{
+ if(localStorage.getItem('VisitorStatus')=='false'){
   Projects = JSON.parse(localStorage.getItem('ProjectListArray'))
-}
+  console.log('YUPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP')
+}else if(document.cookie.indexOf("visited=true") === -1){
+  Projects = [
+     {
+       name: 'Default',
+       task: [],
+       dataIndex: 0,
+       block: defaultProject,
+       taskcount: 0,
+     },
+   ];
+   localStorage.setItem('VisitorStatus','false')
+   console.log('------------------------------------')
+ }
 
 function createProject() {
   let count = JSON.parse(localStorage.getItem('count'));

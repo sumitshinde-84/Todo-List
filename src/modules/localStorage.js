@@ -1,6 +1,6 @@
 import PubSub from "pubsub-js";
 
-function updateProjectDom(_eventName,ProjectsListItem){
+function updateProjectDom(eventName,ProjectsListItem){
     localStorage.setItem('ProjectList',ProjectsListItem);
 }
 

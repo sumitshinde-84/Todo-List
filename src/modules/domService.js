@@ -303,7 +303,14 @@ PubSub.publish('letsUpdateProjectListDomArrAtLocalStorage',taskMainDiv.innerHTML
 function filterBlocks(){
   let tempDiv = document.createElement('div')
   tempDiv.innerHTML = localStorage.getItem('ProjectListDomArray')
-  console.log(tempDiv)
+  let childNodeOfTempDiv = tempDiv.childNodes;
+  for(let i =0; i<Projects.length;i++){
+    if(Projects[i].dataIndex == childNodeOfTempDiv[i]){
+      Projects[i].block = childNodeOfTempDiv[i]
+    }
+  }
+  PubSub.publish('updateProjectArray',Projects)
+  console.log(Projects)
 }
 
 PubSub.subscribe('ToggleMenuClicked', toggle);
