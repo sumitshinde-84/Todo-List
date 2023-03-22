@@ -1,3 +1,4 @@
+
 import PubSub, { publish } from 'pubsub-js';
 import {
   mainContent,
@@ -6,31 +7,18 @@ import {
   projectForm,
   projectUl,
   projectTitle,
-  projectRename,
-  addProjectBtn,
   taskForm,
   taskNameInput,
   taskDetailInput,
   taskDateInput,
-  taskList,
-  taskListSect,
   taskMainDiv,
   addTaskButton,
   taskAddbutton,
   taskUpdateBtn,
-  today,
 } from './domCollection';
-import { Projects } from './projectStructerer';
-import { task } from './task';
-import {
-  addDays,
-  format,
-  add,
-  differenceInDays,
-  parse,
-  isToday,
-} from 'date-fns';
 import project from './project';
+import { Projects } from './projectStructerer';
+
 
 let count = 1;
 export const block = document.createElement('ul');
@@ -107,9 +95,10 @@ function addProject() {
 <option style='display:none;' value='nothing' selected>Rename</option>
 <option style="background-color;border-radius:2px;position:relative;bottom:20px;outline:none;" class='project-delete' value='delete'>Delete</option></select>`;
   projectUl.appendChild(project);
+  PubSub.publish('letsStoreProjectListItem',projectUl.innerHTML)  // lets store project list dom to ls
   projectForm.style.display = 'none';
   count++;
-  // PubSub.publish('addProjectFunctionHasbeenRun',project)
+ 
 }
 
 // ---------------------------------it will fetch projectName on header----------------------------
@@ -185,11 +174,12 @@ function createTaskDom(eventName, project) {
   taskList.appendChild(blockForNameAndDetails);
   taskList.appendChild(blockForDateAndRestThing);
   taskList.appendChild(threeDot);
-
   project.block.appendChild(taskList);
   taskMainDiv.appendChild(project.block);
   project.taskcount++;
+  
   PubSub.publish('taskCancleButtonClicked');
+  
 }
 
 //  --------------------------  function to clear mainTaskDiv when user click on project ---------------------------------
@@ -257,6 +247,7 @@ function updateTaskDetails(eventName, taskUpdateBtnCurrentId) {
 function letsAddAllBlocksToMainTaskDiv() {
   for (let i = 0; i < Projects.length; i++) {
     taskMainDiv.appendChild(Projects[i].block);
+    
   }
 }
 
@@ -291,6 +282,29 @@ function resetDisplay() {
   }
 }
 
+function updateProjectListFromLocalStorage(){
+  if(localStorage.getItem('ProjectList')==undefined){
+   return
+  }else{
+    projectUl.innerHTML=localStorage.getItem('ProjectList')
+  }
+  
+
+}
+
+function updateTaskListDom(){
+
+
+  letsAddAllBlocksToMainTaskDiv()
+PubSub.publish('letsUpdateProjectListDomArrAtLocalStorage',taskMainDiv.innerHTML)
+
+}
+
+function filterBlocks(){
+  let tempDiv = document.createElement('div')
+  tempDiv.innerHTML = localStorage.getItem('ProjectListDomArray')
+  console.log(tempDiv)
+}
 
 PubSub.subscribe('ToggleMenuClicked', toggle);
 PubSub.subscribe('clickAddProjectButton', openForm);
@@ -313,3 +327,7 @@ PubSub.subscribe('letsHideAddTaskBtn', letsRemoveAddTaskBtn);
 PubSub.subscribe('letsShowAddTaskButton', letsShowAddTaskButton);
 PubSub.subscribe('MainMenuClicked', letsClearMainTaskList);
 PubSub.subscribe('MenuClicked', resetDisplay);
+PubSub.subscribe('letsUpdateProjectListDomFromLocalStorage',updateProjectListFromLocalStorage)
+PubSub.subscribe('letsStoreTaskListDom',updateTaskListDom)
+PubSub.subscribe('letsFilterTempDiv',filterBlocks)
+

@@ -4,6 +4,9 @@ import {
   projectBtn,
   addProjectBtn,
   cancleProjectBtn,
+  secondList,
+  projectRename,
+  projectForm,
   updateProjectBtn,
   projectUl,
   addTaskButton,
@@ -14,8 +17,11 @@ import {
   allTask,
   today,
   next7Days,
+  statusInput,
+  taskMainDiv,
 } from './domCollection';
 
+import { block } from './domService';
 
 const menuIcon = document.querySelector('.menuImg');
 menuIcon.addEventListener('click', () => {
@@ -97,3 +103,13 @@ taskUpdateBtn.addEventListener('click', (event) => {
   let taskButtonId = event.target.id;
   PubSub.publish('taskUpdateClicked', taskButtonId);
 });
+
+window.addEventListener('beforeunload',()=>{
+  PubSub.publish('letsStoreTaskListDom')
+})
+
+
+window.addEventListener('load',()=>{
+PubSub.publish('letsUpdateProjectListDomFromLocalStorage')
+PubSub.publish('letsFilterTempDiv')
+})

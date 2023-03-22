@@ -9,3 +9,4 @@ import eventController from './modules/eventController';
 import projectStructerer from './modules/projectStructerer';
 import dateManger from './modules/DateManager';
 import { projectRename } from './modules/domCollection';
+import {localstorage} from './modules/localStorage'

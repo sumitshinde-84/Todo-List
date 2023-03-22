@@ -18,15 +18,21 @@ const defaultProject = document.createElement('ul');
 defaultProject.className = 'task-list';
 defaultProject.id = `block${0}`;
 
-export const Projects = [
-  {
-    name: 'Default',
-    task: [],
-    dataIndex: 0,
-    block: defaultProject,
-    taskcount: 0,
-  },
-];
+
+export let Projects ;
+if(localStorage.getItem('ProjectListArray') == undefined){
+ Projects = [
+    {
+      name: 'Default',
+      task: [],
+      dataIndex: 0,
+      block: defaultProject,
+      taskcount: 0,
+    },
+  ];
+}else{
+  Projects = JSON.parse(localStorage.getItem('ProjectListArray'))
+}
 
 function createProject() {
   let count = JSON.parse(localStorage.getItem('count'));
@@ -37,6 +43,8 @@ function createProject() {
   const ProjectObj = project(projectInput.value, [], count, block);
   Projects.push(ProjectObj);
   // projectForm.reset()
+
+  PubSub.publish('updateProjectArray',Projects)
   count++;
   console.log(Projects);
 }
