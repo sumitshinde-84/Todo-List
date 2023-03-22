@@ -60,7 +60,7 @@ function next7DaysClicked() {
         );
 
         targetedTask.style.display = 'flex';
-        console.log(targetedTask);
+      
       }
     }
   }

@@ -240,39 +240,6 @@ function letsChangeCheckbox(eventName, checkbox) {
   }
 }
 
-function next7DaysClicked() {
-  PubSub.publish('letsClearMainTaskMainList');
-  let targetedTask;
-
-  for (let i = 0; i < Projects.length; i++) {
-    let projectBlock = Projects[i].block.childNodes;
-    projectBlock.forEach((item) => {
-      item.style.display = 'none';
-    });
-    for (let j = 0; j < Projects[i].task.length; j++) {
-      const date = Projects[i].task[j].Date;
-      const dateValue = date.split('-').reverse().join('/');
-      console.log(dateValue);
-      let today = new Date();
-      let result = parse(dateValue, 'dd/MM/yyyy', today);
-
-      let diffrence = differenceInDays(result, today);
-      let isTodayResult = isToday(result);
-      console.log(result);
-      if (isTodayResult == true) {
-        return;
-      } else if (diffrence < 8) {
-        let targetedId = Projects[i].task[j].dataIndex;
-        targetedTask = Projects[i].block.querySelector(
-          `#taskList${targetedId}`
-        );
-
-        targetedTask.style.display = 'flex';
-        console.log(targetedTask);
-      }
-    }
-  }
-}
 
 function updateTaskDetails(eventName, taskUpdateBtnCurrentId) {
   const Task = document.querySelector(`#taskList${taskUpdateBtnCurrentId}`);
@@ -314,35 +281,6 @@ function letsShowAddTaskButton() {
   addTaskButton.style.display = 'block';
 }
 
-function todayHasBeenClicked() {
-  PubSub.publish('letsClearMainTaskMainList');
-
-  let targetedTask;
-  for (let i = 0; i < Projects.length; i++) {
-    let projectBlock = Projects[i].block.childNodes;
-    projectBlock.forEach((item) => {
-      item.style.display = 'none';
-    });
-    for (let j = 0; j < Projects[i].task.length; j++) {
-      let today = new Date();
-      const date = Projects[i].task[j].Date;
-      const dateValue = date.split('-').reverse().join('/');
-      let result = parse(dateValue, 'dd/MM/yyyy', today);
-
-      let isTodayResult = isToday(result);
-      console.log(result);
-      if (isTodayResult == true) {
-        let targetedId = Projects[i].task[j].dataIndex;
-        targetedTask = Projects[i].block.querySelector(
-          `#taskList${targetedId}`
-        );
-
-        targetedTask.style.display = 'flex';
-        console.log(targetedTask);
-      }
-    }
-  }
-}
 
 function resetDisplay() {
   for (let i = 0; i < Projects.length; i++) {
@@ -353,9 +291,6 @@ function resetDisplay() {
   }
 }
 
-function storeVar(eventName, ProjectCount) {
-  localStorage.setItem('count', ProjectCount);
-}
 
 PubSub.subscribe('ToggleMenuClicked', toggle);
 PubSub.subscribe('clickAddProjectButton', openForm);
@@ -376,7 +311,5 @@ PubSub.subscribe('mainListClicked', clearTaskMainBlock);
 PubSub.subscribe('letsClearMainTaskMainList', letsClearMainTaskListForMain);
 PubSub.subscribe('letsHideAddTaskBtn', letsRemoveAddTaskBtn);
 PubSub.subscribe('letsShowAddTaskButton', letsShowAddTaskButton);
-PubSub.subscribe('todayHasBeenClicked', todayHasBeenClicked);
 PubSub.subscribe('MainMenuClicked', letsClearMainTaskList);
-PubSub.subscribe('next7DaysClicked', next7DaysClicked);
 PubSub.subscribe('MenuClicked', resetDisplay);

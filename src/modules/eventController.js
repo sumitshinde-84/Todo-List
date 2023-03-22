@@ -4,9 +4,6 @@ import {
   projectBtn,
   addProjectBtn,
   cancleProjectBtn,
-  secondList,
-  projectRename,
-  projectForm,
   updateProjectBtn,
   projectUl,
   addTaskButton,
@@ -17,11 +14,8 @@ import {
   allTask,
   today,
   next7Days,
-  statusInput,
-  taskMainDiv,
 } from './domCollection';
 
-import { block } from './domService';
 
 const menuIcon = document.querySelector('.menuImg');
 menuIcon.addEventListener('click', () => {
