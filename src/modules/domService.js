@@ -1,5 +1,5 @@
 
-import PubSub, { publish } from 'pubsub-js';
+import PubSub from 'pubsub-js';
 import {
   mainContent,
   sideBar,
@@ -296,20 +296,25 @@ function updateTaskListDom(){
 
 
   letsAddAllBlocksToMainTaskDiv()
-PubSub.publish('letsUpdateProjectListDomArrAtLocalStorage',taskMainDiv.innerHTML)
+PubSub.publish('letsUpdateProjectListDomArrAtLocalStorage',String(taskMainDiv.innerHTML))
 
 }
 
 function filterBlocks(){
+  
   let tempDiv = document.createElement('div')
   tempDiv.innerHTML = localStorage.getItem('ProjectListDomArray')
-  let childNodeOfTempDiv = tempDiv.childNodes;
-  for(let i =0; i<Projects.length;i++){
-    if(Projects[i].dataIndex == childNodeOfTempDiv[i]){
+  console.log(tempDiv)
+  let childNodeOfTempDiv = tempDiv.childNodes
+  console.log(childNodeOfTempDiv,"childs")
+  for(let i =0; i<childNodeOfTempDiv.length;i++){
+    if(Projects[i].dataIndex == childNodeOfTempDiv[i].id[childNodeOfTempDiv[i].id.length - 1]){
       Projects[i].block = childNodeOfTempDiv[i]
     }
+    console.log(Projects,"This is array mine--------------")
   }
-  PubSub.publish('updateProjectArray',Projects)
+
+
   console.log(Projects)
 }
 
@@ -337,4 +342,5 @@ PubSub.subscribe('MenuClicked', resetDisplay);
 PubSub.subscribe('letsUpdateProjectListDomFromLocalStorage',updateProjectListFromLocalStorage)
 PubSub.subscribe('letsStoreTaskListDom',updateTaskListDom)
 PubSub.subscribe('letsFilterTempDiv',filterBlocks)
+
 

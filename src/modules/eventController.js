@@ -111,5 +111,6 @@ window.addEventListener('beforeunload',()=>{
 
 window.addEventListener('load',()=>{
 PubSub.publish('letsUpdateProjectListDomFromLocalStorage')
+PubSub.publish('starter')
 PubSub.publish('letsFilterTempDiv')
 })
