@@ -28,19 +28,19 @@
           <h2>Home</h2>
         </div>
         <ul id="main-list">
-          <li class="allTask">
+          <li class="allTask listItem">
             <img src="./images/inbox.png" alt="" />
             All Task
           </li>
-          <li class="today">
+          <li class="today listItem">
             <img src="./images/today.png" alt="" />
             Today
           </li>
-          <li class="next7days">
+          <li class="next7days listItem">
             <img src="./images/week.png" alt="" />
             Next 7 Days
           </li>
-          <li>
+          <li class="listItem">
             <img src="./images/star.png" alt="" />
             Important
           </li>
@@ -60,25 +60,6 @@
           
           <li ondblclick="ProjectEventlistner(event)" class="list" id="list0">
             <p class="para" id="p0">Default</p>
-            <select id="0" value="none">
-              <option
-                style="background-color;border-radius:2px;position:relative;bottom:20px;outline:none;"
-                class="project-rename"
-                value="rename"
-              >
-                Rename
-              </option>
-              <option style="display: none" value="nothing" selected="">
-                Rename
-              </option>
-              <option
-                style="background-color;border-radius:2px;position:relative;bottom:20px;outline:none;"
-                class="project-delete"
-                value="delete"
-              >
-                Delete
-              </option>
-            </select>
           </li>
         </ul>
         <div class="add-Project">
@@ -90,7 +71,7 @@
       </div>
       <div class="mainContent">
         <div class="Project-Title">
-          <h2>Welcome !</h2>
+          <h2>Default</h2>
         </div>
         <div class="task-main-div"></div>
 
@@ -119,7 +100,7 @@
           </p>
 
           <p class="button-para">
-            <button class="task-add-btn">Add</button>
+            <button class="task-add-btn" id="0">Add</button>
             <button class="task-update-btn">Update</button>
             <button class="task-cancle-btn">Cancle</button>
           </p>
@@ -142,6 +123,7 @@
         updateProjectBtn.style.display = 'block';
         PubSub.publish('openForm');
         //   PubSub.publish('projectClicked')
+        
       }
 
       function statusInputEventListnerFunction(event) {
