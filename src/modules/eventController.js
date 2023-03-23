@@ -19,6 +19,7 @@ import {
   next7Days,
   statusInput,
   taskMainDiv,
+  allProjectItems,
 } from './domCollection';
 
 import { block } from './domService';
@@ -31,7 +32,7 @@ menuIcon.addEventListener('click', () => {
 for (let i = 0; i < list.length; i++) {
   list[i].addEventListener('click', (event) => {
     // Publish the "buttonClicked" event with some data
-    PubSub.publish('mainMenuOptionClicked', { target: event.target });
+    PubSub.publish('mainMenuOptionClicked', { target: event.currentTarget });
   });
 }
 
@@ -52,18 +53,17 @@ cancleProjectBtn.addEventListener('click', (event) => {
 });
 
 allTask.addEventListener('click', () => {
-  PubSub.publish('MenuClicked')
+  PubSub.publish('MenuClicked');
   PubSub.publish('letsClearMainTaskMainList');
   PubSub.publish('letsHideAddTaskBtn');
 });
 
 today.addEventListener('click', () => {
-
   PubSub.publish('todayHasBeenClicked');
 });
 
 next7Days.addEventListener('click', () => {
-  PubSub.publish('MenuClicked')
+  PubSub.publish('MenuClicked');
   PubSub.publish('next7DaysClicked');
 });
 
@@ -77,10 +77,19 @@ projectUl.addEventListener('click', (event) => {
   let targetedElement = event.target;
   const taskAddbutton = document.querySelector('.task-add-btn');
   taskAddbutton.id = event.target.id[event.target.id.length - 1];
-  PubSub.publish('MenuClicked')
+  PubSub.publish('MenuClicked');
   PubSub.publish('targetedListClicked', targetedElement);
   PubSub.publish('letsShowAddTaskButton');
+  
+  
 });
+for (let i = 0; i < allProjectItems.length; i++) {
+allProjectItems[i].addEventListener('click',(Event)=>{
+  PubSub.publish('letsUnSelectOtherListItem')
+  PubSub.publish('letsUnSelectProjectList',Event.currentTarget)
+  PubSub.publish('letsSelectProjectList',Event.currentTarget)
+  
+})}
 
 addTaskButton.addEventListener('click', (Event) => {
   PubSub.publish('addTaskButtonClicked');
@@ -104,13 +113,15 @@ taskUpdateBtn.addEventListener('click', (event) => {
   PubSub.publish('taskUpdateClicked', taskButtonId);
 });
 
-window.addEventListener('beforeunload',()=>{
-  PubSub.publish('letsStoreTaskListDom')
-})
+window.addEventListener('beforeunload', () => {
+  PubSub.publish('letsStoreTaskListDom');
+});
 
-
-window.addEventListener('load',()=>{
-PubSub.publish('letsUpdateProjectListDomFromLocalStorage')
-PubSub.publish('starter')
-PubSub.publish('letsFilterTempDiv')
-})
+window.addEventListener('load', () => {
+  PubSub.publish('letsUpdateProjectListDomFromLocalStorage');
+  PubSub.publish('starter');
+  PubSub.publish('letsFilterTempDiv');
+  
+  
+  
+});

@@ -9,6 +9,9 @@ import {
   taskDateInput,
   taskAddbutton,
   addTaskButton,
+  projectUl,
+  allProjectItems
+ 
 } from './domCollection';
 import { task } from './task';
 
@@ -17,36 +20,35 @@ localStorage.setItem('count', 1);
 const defaultProject = document.createElement('ul');
 defaultProject.className = 'task-list';
 defaultProject.id = `block${0}`;
-let Projects ;
-function starter(){
+let Projects;
+function starter() {
+  let visitor = localStorage.getItem('visitor');
+  if (visitor === 'true') {
+    Projects = localStorage.getItem('ProjectListArray');
+    Projects = JSON.parse(Projects);
+    PubSub.publish('letsSelectAllTask')
+    console.log(Projects);
 
-let visitor = localStorage.getItem('visitor')
- if(visitor === 'true'){
-  Projects = localStorage.getItem('ProjectListArray')
-  Projects = JSON.parse(Projects)
-  console.log(Projects)
-  console.log('++++++++++++++++++++++++++++++++++++++')
-  
-}else {
-  Projects = [
-     {
-       name: 'Default',
-       task: [],
-       dataIndex: 0,
-       block: defaultProject,
-       taskcount: 0,
-     },
-   ];
-   localStorage.setItem('visitor','true')
-   console.log('------------------------------------')
- }
+  } else {
+    Projects = [
+      {
+        name: 'Default',
+        task: [],
+        dataIndex: 0,
+        block: defaultProject,
+        taskcount: 0,
+      },
+    ];
+    localStorage.setItem('visitor', 'true');
+       allProjectItems[0].style.backgroundColor='#2abd675f'
+       allProjectItems[0].style.borderLeft='3px #2abd67 solid'
+   
+  }
 }
- function overRideProjectArray(eventName,projects){
-  Projects = projects
+function overRideProjectArray(eventName, projects) {
+  Projects = projects;
   
- }
-
-
+}
 
 function createProject() {
   let count = JSON.parse(localStorage.getItem('count'));
@@ -58,8 +60,9 @@ function createProject() {
   Projects.push(ProjectObj);
   // projectForm.reset()
 
-  PubSub.publish('updateProjectArray',Projects)
+  PubSub.publish('updateProjectArray', Projects);
   count++;
+  localStorage.setItem('count', count);
   console.log(Projects);
 }
 
@@ -81,6 +84,8 @@ function letsRenameProjectNameProperty(eventName, data) {
     }
   }
   PubSub.publish('closeForm');
+  PubSub.publish('updateProjectArray', Projects);
+  PubSub.publish('letsStoreProjectListItem', projectUl.innerHTML);
 }
 
 // ------------------------------------ create Task list -----------------------------------
@@ -88,7 +93,6 @@ function letsRenameProjectNameProperty(eventName, data) {
 function createTask() {
   if (!taskCount) {
     taskCount = 0;
-    
   }
   console.log('this is task count', taskCount);
   const taskObj = task(
@@ -103,10 +107,11 @@ function createTask() {
   let targetedId = taskAddbutton.id;
   for (const task of Projects) {
     if (task.dataIndex == targetedId) {
+      taskObj.dataIndex = Projects[targetedId].dataIndex;
       Projects[targetedId].task.push(taskObj);
 
       PubSub.publish('taskObjCreated', Projects[targetedId]);
-      PubSub.publish('updateProjectArray',Projects)
+      PubSub.publish('updateProjectArray', Projects);
     }
   }
 
@@ -123,6 +128,7 @@ function updateTaskDetails(eventName, updateBtnCurrentId) {
       console.log(Projects[taskAddbutton.id].task[i]);
     }
   }
+  PubSub.publish('updateProjectArray', Projects);
 }
 
 PubSub.subscribe('projectSelected', showProjectDetail);
@@ -132,9 +138,8 @@ PubSub.subscribe(
   letsRenameProjectNameProperty
 );
 
-export {Projects} ;
+export { Projects };
 PubSub.subscribe('taskAddButtonClicked', createTask);
 PubSub.subscribe('taskDetailUpdateDone', updateTaskDetails);
-PubSub.subscribe('letsOverRideProject',overRideProjectArray)
-PubSub.subscribe('starter',starter)
-
+PubSub.subscribe('letsOverRideProject', overRideProjectArray);
+PubSub.subscribe('starter', starter);

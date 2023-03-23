@@ -1,3 +1,5 @@
+
+
 export const menuIcon = document.querySelector('.menuImg');
 export const sideBar = document.querySelector('.sidebar');
 export const mainContent = document.querySelector('.mainContent');
@@ -29,3 +31,4 @@ export const taskUpdateBtn = document.querySelector('.task-update-btn');
 export const allTask = document.querySelector('.allTask');
 export const today = document.querySelector('.today');
 export const next7Days = document.querySelector('.next7days');
+export const allProjectItems = document.querySelectorAll('.project-ul > li')
